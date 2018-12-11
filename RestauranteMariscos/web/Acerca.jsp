@@ -1,23 +1,22 @@
 <!doctype html>
 <html lang="en">
-    <body>
-        <head>
+    <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/main.css">
         <script src="js/bootstrap.min.js"></script>
         <title>Acerca de</title>
-        </head>
-        
+    </head>
     <div style="background-image:url(images/fondo.jpg)">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="css/main.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!------ Include the above in your HEAD tag ---------->
+
 
         <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
             <a class="navbar-brand" href="#">Mariscos Don Roque</a>
@@ -50,37 +49,43 @@
             </div>
         </div>
 
-        <div class="row"  >
 
-            <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(images/fondo.jpg) left center; background-size: 100%;">
-                <link rel="stylesheet" href="css/style.css">
-                <link rel="stylesheet" href="css/main.css">
-                <!-- Crea un componente que permite resaltar un texto  -->
+
+
+        <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(images/fondo.jpg) no-repeat left center; background-size: cover;">
+            <link rel="stylesheet" href="css/style.css"> 
+            <!-- Crea un componente que permite resaltar un texto  -->
+
+
+       
                 <h1>
                     &emsp; 
                     &emsp; &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp;Mariscos Don roque	
                 </h1>
-                <br>
-                <br>
+                <br>  <br>
                 <p>&emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; 
                     &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Restaurant de mariscos</p>
-
+            
                 <p>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 
                     &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
                     Ubicada en ....</p>
                 <p>   &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; 
                     &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
                     Telefono ....</p>
-
-               </div>
-            </div>
-        <br><br><br>
-        <br><br><br>
-        <br><br><br>
-        <br><br><br>
-        <br>
+       
         </div>
-    </body>
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
+        <br><br><br> 
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
+        <br><br><br> 
+        <br>
+    </div>
+</body>
 </html> 
 
 
