@@ -15,77 +15,47 @@
 
 <!doctype html>
 <html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/bootstrap.min.js"></script>
+        <title>Platillos</title>
+    </head>
+    <div style="background-image:url(images/fondo.jpg)">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+        <div style="background-image:url(images/fondo.jpg)">
 
+            </style>
+            <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
+                <a class="navbar-brand" href="#">Mariscos Don Roque</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Menu.jsp">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item "> 
 
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-
-    <title>Platilos</title>
-  </head>
-  <body>
-  <div style="background-image:url(images/fondo.jpg)">
-
-  <style type="text/css">
-    button {
-		font-size: 10px;
-		line-height: 10px;
-		min-width: 10px;
-        font-weight: bold;
-		background: #ffffff;
-		border: none;		
-    }
-    button:hover, button:focus{
-		background: #dfe3e4;
-        outline: none !important;
-	}
-
-  </style>
-  <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
-        <a class="navbar-brand" href="#">Mariscos Don Roque</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="Menu.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item "> 
-                    
-                    <a class="nav-link" href="Platillos.html" >Platillos <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="Usuarios.html" >Usuarios <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuentas</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown1">
-                        <li class="dropdown-item" href="#"><a>Action 1</a></li>
-                        <li class="dropdown-item dropdown">
-                            <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Dropdown1.1</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                                    <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                            <div class="dropdown-menu">
-                                              <a class="dropdown-item active" href="#">Action</a>
-                                              <a class="dropdown-item" href="#">Another action</a>
-                                              <a class="dropdown-item" href="#">Something else here</a>
-                                              <div class="dropdown-divider"></div>
-                                              <a class="dropdown-item" href="#">Separated link</a>
-                                            </div> <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">
-                                        <li class="dropdown-item" href="#"><a>Action 1.1.1</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <a class="nav-link" href="Platillos.jsp" >Platillos <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="Usuarios.jsp" >Usuarios <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="Cuentas.jsp" >Cuentas<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                 </li>
