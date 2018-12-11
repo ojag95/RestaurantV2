@@ -1,0 +1,13 @@
+h2 {
+	font-family: Montserrat-Regular;
+	font-size: 30px;
+	line-height: 1.7;
+	color: #666666;
+    margin: 0px;
+    text-align:center;
+}
+.form-rounded {
+border-radius: 1rem;
+font-family: Montserrat-Regular;
+font-size: 12px;
+}
