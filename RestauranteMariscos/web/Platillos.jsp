@@ -4,7 +4,12 @@
     Author     : oscar
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="Modelo.Platillo"%>
+<%@page import="ModeloDAO.PlatilloDAO"%>
 <%@page import="java.sql.ResultSet"%>
+<%@page import =" java.net.*" %>
 <%@page import="CodeHelpers.ConexionesDB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -103,18 +108,18 @@
           <!-- Crea un componente que permite resaltar un texto  -->
         <%
             
-            ConexionesDB conector =new ConexionesDB();
-            ResultSet resultado=null;
+            //ConexionesDB conector;
+            //conector=new ConexionesDB();
+            //ResultSet resultado=null;
 
-            try{
-            System.out.println(conector.probarConexion());
-            resultado=conector.consulta("select * from Platillos;");
-            }catch(Exception e)
-            {
-                System.out.println(e);
-            }
+            //try{
+            //System.out.println(conector.probarConexion());
+            //resultado=conector.consulta("select * from Platillos;");
+            //}catch(Exception e)
+            //{
+            //    System.out.println(e);
+            //}
         %>        
-        
         <div class="row"  >
           <div class="col-sm-8" >
                 <div class="card">
@@ -126,15 +131,26 @@
                           <tr>
                             <th>Patillo</th>
                             <th>Precio</th>
+                            <th>Operaciones</th>
                           </tr>
                         </thead>
                         <tbody>
                         <%
-                            while(resultado.next()){
+                            PlatilloDAO dao = new PlatilloDAO();
+                            List<Platillo>list=dao.listar();
+                            Iterator<Platillo>iterador=list.iterator();
+                            Platillo platillo=null;
+                            while(iterador.hasNext())
+                            {
+                                platillo=iterador.next();
                         %>
                           <tr>
-                           <td> <%= resultado.getString("nombrePlatillo")  %> <br><small><%= resultado.getString("descripcion") %></small></td>
-                            <td>$<%= resultado.getString("precioPlatillo")  %></td>
+                           <td> <%= platillo.getNombrePlatillo()  %> <br><small><%= platillo.getDescripcionPlatillo() %></small></td>
+                            <td>$<%= platillo.getPrecioPlatillo()  %></td>
+                            <td>                            
+                                <button type="submit"><img src="images/modifica.png" alt="x" /></button>
+                                <button type="submit"><img src="images/elimina.png" alt="x" /></button>
+                            </td>
                           </tr>
                           <%}%>
                           
@@ -144,39 +160,29 @@
           <div class="col-sm-4">
           <div class="card">
           <div class="card bg-dark text-white">
-            <h2>Menú Platillos</h2>
+            <h2>Registrar Platillos</h2>
           </div>   
           <div class="card-body">     
                 <div class="container">
-                        <link rel="stylesheet" type="text/css" href="css/main.css">
-                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-                        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-                        <form action="/action_page.php">       
-                      <div class="form-group">
-                            <label for="text">Nombre platillo:</label>
-                            <input type="text" class="form-control form-rounded" placeholder="Nombre del platillo" required>
-                      </div>
-                      <div class="form-group">
+
+                        <form action="Platillos.jsp" method="post">       
+                        <div class="form-group">
+                              <label for="text">Nombre platillo:</label>
+                              <input type="text" class="form-control form-rounded" name="nombrePlatillo" placeholder="Nombre del platillo" required>
+                        </div>
+                        <div class="form-group">
                             <label for="text">Descripción:</label>
-                            <input type="text" class="form-control form-rounded" placeholder="Descripcion" required>
-               </div>
+                            <input type="text" class="form-control form-rounded" name="descripcionPlatillo" placeholder="Descripcion" required>
+                        </div>
                       <div class="form-group">  
                             <label for="text">Precio:</label>
-                            <input min='0' type="number" step="0.50" class="form-control form-rounded" placeholder="Precio" required>
+                            <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioPlatillo" placeholder="Precio" required>
                                 </script>
                         </div>
-                      <!---
-                        <div class="inputWithIcon">
-                            <input type="text" placeholder="Your name">
-                            <i class="fas fa-bolt"></i>
-                          </div>
-                        -->
                         <br>
                         <center> 
-                           <button type="submit"><img src="images/agrega.png" alt="x" /></button>
-                           <button type="submit"><img src="images/modifica.png" alt="x" /></button>
-                           <button type="submit"><img src="images/elimina.png" alt="x" /></button></div> 
+                           <input type="submit" value="Registrar" alt="x" name="Registrar" />
+                           </div> 
            <br><br>
           <div class="form-group form-check">
                 <label class="form-check-label">
@@ -195,5 +201,39 @@
   </div>
 </body>
 </html> 
+<% 
+ //String nombre,descripcion,operacion;
+ //String precio;
+ //nombre=request.getParameter("nombre");
+ //descripcion=request.getParameter("descripcion");
+ //precio=request.getParameter("precio");
+ //ProcesarDatos(nombre,descripcion,precio);
+
+%>
 
 
+
+<%!
+//public String helloWorld(){
+ //return "Hola mundo";
+//}
+%>
+
+<%!
+//public void ProcesarDatos(String nombre,String descripcion, String precio){
+   // if (nombre!=null && descripcion!=null && precio!=null)
+    //{
+      //      System.out.println(nombre +" "+descripcion+" "+precio);
+        //    ConexionesDB conector=new ConexionesDB();
+          //  try{
+          //  conector.registrar("call registroPlatillo('" + nombre + "','" + descripcion + "'," + precio + ");");
+           // }catch(Exception e)
+           // {
+            //    System.out.println(e);
+            //}
+
+
+    //}
+
+//}
+%>
