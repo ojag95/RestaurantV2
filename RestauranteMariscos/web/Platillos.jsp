@@ -26,6 +26,19 @@
         <script src="js/bootstrap.min.js"></script>
         <title>Platillos</title>
     </head>
+    <style>
+        button {
+                font-size: 16px;
+                line-height: 26px;
+                min-width: 60px;
+                font-weight: bold;
+                            background-color: transparent;
+                border: none;		
+            }
+            button:hover{
+ background: #dadada;
+                outline: none !important;
+</style>
     <div style="background-image:url(images/fondo.jpg)">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -44,9 +57,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="Menu.jsp">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item "> 
-
-                            <a class="nav-link" href="Platillos.jsp" >Platillos <span class="sr-only">(current)</span></a>
+                         <li class="nav-item ">
+                            <a class="nav-link" href="ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="Usuarios.jsp" >Usuarios <span class="sr-only">(current)</span></a>
@@ -58,11 +70,6 @@
                             <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item ">
-                        <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
-                    </li>
-            </ul>
           <form class="form-inline mt-2 mt-md-0">
               <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
@@ -149,7 +156,7 @@
                             <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioPlatillo" placeholder="Precio" required>
                                 </script>
                                                      
-                        </div>                                 <input type="submit" name="accion" value="Agregar">     </form> 
+                      </div>                               <center>  <button type="submit" name="accion" value="Agregar"><img src="images/agrega.png" alt="x" /> </button> </center>   </form> 
                         <br>
                      
 
