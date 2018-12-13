@@ -84,7 +84,7 @@ public class ControladorPlatillo extends HttpServlet {
             platillo.setDescripcionPlatillo(descripcion);
             platillo.setPrecioPlatillo(precioPlatillo);
             platilloDao.Platillo(platillo);
-            acceso=urlConsulta; 
+            acceso=urlPlatillos; 
         }
         RequestDispatcher vista =request.getRequestDispatcher(acceso);
         vista.forward(request, response);

@@ -1,46 +1,57 @@
 h2 {
-	font-family: Montserrat-Regular;
-	font-size: 30px;
-	line-height: 1.7;
-	color: #ffffff;
+    font-family: Montserrat-Regular;
+    font-size: 30px;
+    line-height: 1.7;
+    color: #ffffff;
     margin: 0px;
     text-align:center;
 }
 titul {
-	font-family: courier new;
-	font-size: 42px;
-	line-height: 1.7;
-	color: #ffffff;
+    font-family: courier new;
+    font-size: 42px;
+    line-height: 1.7;
+    color: #ffffff;
     margin: 0px;
 }
 .form-rounded {
-border-radius: 1rem;
-font-family: Montserrat-Regular;
-font-size: 9px;
+    border-radius: 1rem;
+    font-family: Montserrat-Regular;
+    font-size: 9px;
 }
 
 label{
-	font-family: Montserrat-Regular;
-	font-size: 12px;	
+    font-family: Montserrat-Regular;
+    font-size: 12px;	
 }
 
 a{
-	font-family: Montserrat-Regular;
-	font-size: 12px;	
+    font-family: Montserrat-Regular;
+    font-size: 12px;	
 }
 
 font{
-	font-size: 14px;
-	color: #ffffff;
+    font-size: 14px;
+    color: #ffffff;
 }
 
 
 style {
 
-                background: url(images/fondo.jpg) no-repeat center center fixed;
-                -webkit-background-size: cover;
-                -moz-background-size: cover;
-                -o-background-size: cover;
-                background-size: cover;
-            }
-            
+    background: url(images/fondo.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+button {
+    font-size: 16px;
+    line-height: 26px;
+    min-width: 60px;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;		
+}
+button:hover{
+    background: #dadada;
+    outline: none !important;

@@ -27,17 +27,7 @@
         <title>Platillos</title>
     </head>
     <style>
-        button {
-                font-size: 16px;
-                line-height: 26px;
-                min-width: 60px;
-                font-weight: bold;
-                            background-color: transparent;
-                border: none;		
-            }
-            button:hover{
- background: #dadada;
-                outline: none !important;
+
 </style>
     <div style="background-image:url(images/fondo.jpg)">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -98,6 +88,7 @@
             //}
         %>        
         <div class="row"  >
+              <link rel="stylesheet" href="css/main.css">
           <div class="col-sm-8" >
                 <div class="card">
               <div class="card bg-dark text-white">
