@@ -89,7 +89,7 @@ public class ConexionesDB {
                 estado="La eliminacion se ha realizado exitosamente";              
             }   
          } catch (SQLException ex) {
-                estado="No se ha posido realizar la eliminación el error ha sido el siguiente:\n"+ex;
+                estado="No se ha podido realizar la eliminación el error ha sido el siguiente:\n"+ex;
         }   
                 return estado;
     

@@ -11,28 +11,29 @@ import Modelo.Platillo;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-public class PlatilloDAO implements CRUDPlatillos{
+
+public class PlatilloDAO implements CRUDPlatillos {
+
     ConexionesDB conector = new ConexionesDB();
+
     @Override
     public List listar() {
-        ArrayList<Platillo>listaPlatillos = new ArrayList<>();
-        ResultSet resultadoConsulta=null;
-        try{
-            resultadoConsulta= conector.consulta("select * from Platillos;");
-            while(resultadoConsulta.next())
-            {
+        ArrayList<Platillo> listaPlatillos = new ArrayList<>();
+        ResultSet resultadoConsulta = null;
+        try {
+            resultadoConsulta = conector.consulta("select * from Platillos;");
+            while (resultadoConsulta.next()) {
                 Platillo objetoPlatillo = new Platillo();
                 objetoPlatillo.setIdPlatillo(resultadoConsulta.getInt("idPlatillo"));
                 objetoPlatillo.setNombrePlatillo(resultadoConsulta.getString("nombrePlatillo"));
                 objetoPlatillo.setDescripcionPlatillo(resultadoConsulta.getString("descripcion"));
                 objetoPlatillo.setPrecioPlatillo(resultadoConsulta.getFloat("precioPlatillo"));
                 listaPlatillos.add(objetoPlatillo);
-                
+
             }
-        
-        }catch(Exception e)
-        {
-            
+
+        } catch (Exception e) {
+
         }
         return listaPlatillos;
     }
@@ -42,14 +43,13 @@ public class PlatilloDAO implements CRUDPlatillos{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public boolean agregar(Platillo platillo) {
-        try{
-            System.out.println("Agregar");
-            conector.registrar("call registroPlatillo('" + platillo.getNombrePlatillo() + "','" + platillo.getDescripcionPlatillo() + "'," + platillo.getPrecioPlatillo() + ");");
-        }catch(Exception e)
-        {
+    public boolean Platillo(Platillo platillo) {
         
+        try {
+            System.out.println("agregar");
+            conector.registrar("insert into Platillos (nombrePlatillo, descripcion, precioPlatillo)values('" + platillo.getNombrePlatillo() + "','" + platillo.getDescripcionPlatillo() + "','" + platillo.getPrecioPlatillo() + "');");
+        } catch (Exception e) {
+
         }
         return false;
     }
@@ -63,5 +63,10 @@ public class PlatilloDAO implements CRUDPlatillos{
     public boolean eliminar(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public boolean agregar(Platillo platillo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

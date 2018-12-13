@@ -130,28 +130,30 @@
           <div class="col-sm-4">
           <div class="card">
           <div class="card bg-dark text-white">
-            <h2>Registrar Platillos</h2>
+          <h2>Platillos</h2>
           </div>   
           <div class="card-body">     
                 <div class="container">
-
-                        <form action="Platillos.jsp" method="post">       
+        <link rel="stylesheet" href="css/main.css">
+                        <form  accion="ControladorPlatillo">       
                         <div class="form-group">
                               <label for="text">Nombre platillo:</label>
                               <input type="text" class="form-control form-rounded" name="nombrePlatillo" placeholder="Nombre del platillo" required>
                         </div>
                         <div class="form-group">
                             <label for="text">Descripción:</label>
-                            <input type="text" class="form-control form-rounded" name="descripcionPlatillo" placeholder="Descripcion" required>
+                            <input type="text" class="form-control form-rounded" name="descripcion" placeholder="Descripcion" required>
                         </div>
                       <div class="form-group">  
                             <label for="text">Precio:</label>
                             <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioPlatillo" placeholder="Precio" required>
                                 </script>
-                        </div>
+                                                     
+                        </div>                                 <input type="submit" name="accion" value="Agregar">     </form> 
                         <br>
-                        <center> 
-                           <input type="submit" value="Registrar" alt="x" name="Registrar" />
+                     
+
+
                            </div> 
            <br><br>
           <div class="form-group form-check">
@@ -159,7 +161,7 @@
                 <input class="form-check-input" type="checkbox"> Habilitar edicion</input>
               </label>
                 </div>   
-              </form> 
+            
           </div>
         </div>
         </div>

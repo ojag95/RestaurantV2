@@ -35,6 +35,7 @@ public class ControladorPlatillo extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     String urlConsulta="Platillos.jsp";
+    String urlPlatillos="Platillos.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -65,24 +66,25 @@ public class ControladorPlatillo extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         
-        processRequest(request, response);
+      //  processRequest(request, response);
         String acceso="";
-        String accion=request.getParameter("accion");
-        System.out.println(accion);
-        if (accion.equalsIgnoreCase("listar")){
+        String action=request.getParameter("accion");
+        System.out.println(action);
+        if (action.equalsIgnoreCase("listar")){
             acceso=urlConsulta;
         }
-        else if (accion.equalsIgnoreCase("Registrar")) {
+        else if (action.equalsIgnoreCase("Platillo")) {
+            acceso=urlPlatillos;
+        }
+        else if (action.equalsIgnoreCase("Agregar")) {
             String nombrePlatillo=request.getParameter("nombrePlatillo");
-            String descripcionPlatillo= request.getParameter("descripcionPlatillo");
-            float precio=Float.parseFloat(request.getParameter("precioPlatillo"));
+            String descripcion= request.getParameter("descripcion");
+            float precioPlatillo=Float.parseFloat(request.getParameter("precioPlatillo"));
             platillo.setNombrePlatillo(nombrePlatillo);
-            platillo.setDescripcionPlatillo(descripcionPlatillo);
-            platillo.setPrecioPlatillo(precio);
-            platilloDao.agregar(platillo);
-            acceso=urlConsulta;
-
-            
+            platillo.setDescripcionPlatillo(descripcion);
+            platillo.setPrecioPlatillo(precioPlatillo);
+            platilloDao.Platillo(platillo);
+            acceso=urlConsulta; 
         }
         RequestDispatcher vista =request.getRequestDispatcher(acceso);
         vista.forward(request, response);
@@ -99,7 +101,7 @@ public class ControladorPlatillo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+      
     }
 
     /**
