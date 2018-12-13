@@ -60,8 +60,14 @@ public class PlatilloDAO implements CRUDPlatillos {
     }
 
     @Override
-    public boolean eliminar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean eliminar(int idPlatillo) {
+    try {
+            System.out.println("eliminar");
+            conector.registrar("delete from Platillos where idPlatillo="+idPlatillo);
+        } catch (Exception e) {
+
+        }
+        return false;
     }
 
     @Override

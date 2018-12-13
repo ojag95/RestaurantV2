@@ -57,5 +57,5 @@ public class Platillo {
     public void setPrecioPlatillo(Float precioPlatillo) {
         this.precioPlatillo = precioPlatillo;
     }
-    
+
 }

@@ -70,13 +70,9 @@ public class ControladorPlatillo extends HttpServlet {
         String acceso="";
         String action=request.getParameter("accion");
         System.out.println(action);
-        if (action.equalsIgnoreCase("listar")){
-            acceso=urlConsulta;
-        }
-        else if (action.equalsIgnoreCase("Platillo")) {
-            acceso=urlPlatillos;
-        }
-        else if (action.equalsIgnoreCase("Agregar")) {
+        if (action.equalsIgnoreCase("Platillo")){
+          acceso=urlPlatillos;   
+        }else if (action.equalsIgnoreCase("Agregar")) {
             String nombrePlatillo=request.getParameter("nombrePlatillo");
             String descripcion= request.getParameter("descripcion");
             float precioPlatillo=Float.parseFloat(request.getParameter("precioPlatillo"));
@@ -85,6 +81,14 @@ public class ControladorPlatillo extends HttpServlet {
             platillo.setPrecioPlatillo(precioPlatillo);
             platilloDao.Platillo(platillo);
             acceso=urlPlatillos; 
+        }else if (action.equalsIgnoreCase("eliminar")) {
+            int idPlatillo = Integer.parseInt(request.getParameter("idPlatillo"));
+            platillo.setIdPlatillo(idPlatillo);
+            platilloDao.eliminar(idPlatillo);
+            acceso=urlPlatillos;
+        }
+        else{
+              acceso=urlPlatillos;
         }
         RequestDispatcher vista =request.getRequestDispatcher(acceso);
         vista.forward(request, response);
