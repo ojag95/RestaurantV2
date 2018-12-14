@@ -15,7 +15,7 @@ import java.util.List;
 public class PlatilloDAO implements CRUDPlatillos {
 
     ConexionesDB conector = new ConexionesDB();
-
+    Platillo p=new Platillo();
     @Override
     public List listar() {
         ArrayList<Platillo> listaPlatillos = new ArrayList<>();
@@ -39,12 +39,26 @@ public class PlatilloDAO implements CRUDPlatillos {
     }
 
     @Override
-    public Platillo listar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Platillo listar(int idPlatillo) {
+        ArrayList<Platillo> listaPlatillos = new ArrayList<>();
+        ResultSet resultadoConsulta = null;
+        try {
+            resultadoConsulta = conector.consulta("select * from Platillos where idPlatillo=" + idPlatillo);
+            while (resultadoConsulta.next()) {
+                p.setIdPlatillo(resultadoConsulta.getInt("idPlatillo"));
+                p.setNombrePlatillo(resultadoConsulta.getString("nombrePlatillo"));
+                p.setDescripcionPlatillo(resultadoConsulta.getString("descripcion"));
+                p.setPrecioPlatillo(resultadoConsulta.getFloat("precioPlatillo"));
+
+            }
+
+        } catch (Exception e) {
+        }
+        return p;
     }
 
     public boolean Platillo(Platillo platillo) {
-        
+
         try {
             System.out.println("agregar");
             conector.registrar("insert into Platillos (nombrePlatillo, descripcion, precioPlatillo)values('" + platillo.getNombrePlatillo() + "','" + platillo.getDescripcionPlatillo() + "','" + platillo.getPrecioPlatillo() + "');");
@@ -56,14 +70,21 @@ public class PlatilloDAO implements CRUDPlatillos {
 
     @Override
     public boolean editar(Platillo platillo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       try {
+            System.out.println("actualizar");
+            String sql= "update Platillos set nombrePlatillo='"+ platillo.getNombrePlatillo()+"',descripcion='"+platillo.getDescripcionPlatillo()+"',precioPlatillo='"+ platillo.getPrecioPlatillo() + "'where idPlatillo=" + platillo.getIdPlatillo();
+            conector.registrar(sql);
+        } catch (Exception e) {
+
+        }
+        return false; 
     }
 
     @Override
     public boolean eliminar(int idPlatillo) {
-    try {
+        try {
             System.out.println("eliminar");
-            conector.registrar("delete from Platillos where idPlatillo="+idPlatillo);
+            conector.registrar("delete from Platillos where idPlatillo=" + idPlatillo);
         } catch (Exception e) {
 
         }

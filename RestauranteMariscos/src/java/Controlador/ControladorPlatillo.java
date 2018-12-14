@@ -34,8 +34,8 @@ public class ControladorPlatillo extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    String urlConsulta="Platillos.jsp";
     String urlPlatillos="Platillos.jsp";
+    String urlEditP="EditarPlatillo.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -86,9 +86,20 @@ public class ControladorPlatillo extends HttpServlet {
             platillo.setIdPlatillo(idPlatillo);
             platilloDao.eliminar(idPlatillo);
             acceso=urlPlatillos;
-        }
-        else{
-              acceso=urlPlatillos;
+        }else if (action.equalsIgnoreCase("editar")) {
+            request.setAttribute("idPlatillo",request.getParameter("idPlatillo"));
+            acceso=urlEditP;     
+        }else if(action.equalsIgnoreCase("Actualizar")){
+            int idPlatillo=Integer.parseInt(request.getParameter("idPlatillo"));
+            String nombrePlatillo=request.getParameter("nombrePlatillo");
+            String descripcion= request.getParameter("descripcion");
+            float precioPlatillo=Float.parseFloat(request.getParameter("precioPlatillo"));
+            platillo.setIdPlatillo(idPlatillo);
+            platillo.setNombrePlatillo(nombrePlatillo);
+            platillo.setDescripcionPlatillo(descripcion);
+            platillo.setPrecioPlatillo(precioPlatillo);
+            platilloDao.editar(platillo);
+            acceso=urlPlatillos;
         }
         RequestDispatcher vista =request.getRequestDispatcher(acceso);
         vista.forward(request, response);

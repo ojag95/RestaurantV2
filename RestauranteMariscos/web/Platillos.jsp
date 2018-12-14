@@ -113,6 +113,7 @@
                                         <td><%= platillo.getIdPlatillo()%> &emsp; <%= platillo.getNombrePlatillo()%> <br><small><%= platillo.getDescripcionPlatillo()%></small></td>
                                         <td>$<%= platillo.getPrecioPlatillo()%></td>
                                         <td>                            
+                                             <a href="ControladorPlatillo?accion=editar&idPlatillo=<%= platillo.getIdPlatillo()%>"> <img src="images/modifica.png" alt="x" /> </a>       
                                             <a href="ControladorPlatillo?accion=eliminar&idPlatillo=<%= platillo.getIdPlatillo()%>"> <img src="images/elimina.png" alt="x" /> </a>       
                                         </td>
                                     </tr>
