@@ -144,19 +144,19 @@
                                             <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioPlatillo" placeholder="Precio" required>
                                             </script>
 
-                                        </div>  
+                                        </div>
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" required> Confirmar informacion </input>
+                                    </label>
+                                </div> 
                                         <center>  <button type="submit" name="accion" value="Agregar"><img src="images/agrega.png" alt="x" /> </button> </center>   </form> 
                                     <br>
 
 
 
                                 </div> 
-                                <br><br>
-                                <div class="form-group form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox"> Habilitar edicion</input>
-                                    </label>
-                                </div>   
+                                  
 
                             </div>
                         </div>
