@@ -26,17 +26,13 @@
         <script src="js/bootstrap.min.js"></script>
         <title>Platillos</title>
     </head>
-    <style>
-
-    </style>
+ 
     <div style="background-image:url(images/fondo.jpg)">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!------ Include the above in your HEAD tag ---------->
         <div style="background-image:url(images/fondo.jpg)">
-
-            </style>
             <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
                 <a class="navbar-brand" href="#">Mariscos Don Roque</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +44,7 @@
                             <a class="nav-link" href="Menu.jsp">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="Platillo/ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="Usuarios.jsp" >Usuarios <span class="sr-only">(current)</span></a>

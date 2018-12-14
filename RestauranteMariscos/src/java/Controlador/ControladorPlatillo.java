@@ -34,8 +34,8 @@ public class ControladorPlatillo extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    String urlPlatillos="Platillos.jsp";
-    String urlEditP="EditarPlatillo.jsp";
+    String urlPlatillos="Platillo/Platillos.jsp";
+    String urlEditP="Platillo/EditarPlatillo.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
