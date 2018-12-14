@@ -96,6 +96,7 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th> ID </th>
                                         <th>Platillo</th>
                                         <th>Precio</th>
                                         <th>Operaciones</th>
@@ -110,7 +111,8 @@
                                             platillo = iterador.next();
                                     %>
                                     <tr>
-                                        <td><%= platillo.getIdPlatillo()%> &emsp; <%= platillo.getNombrePlatillo()%> <br><small><%= platillo.getDescripcionPlatillo()%></small></td>
+                                        <td><%= platillo.getIdPlatillo()%></td>
+                                        <td><%= platillo.getNombrePlatillo()%> <br><small><%= platillo.getDescripcionPlatillo()%></small></td>
                                         <td>$<%= platillo.getPrecioPlatillo()%></td>
                                         <td>                            
                                              <a href="ControladorPlatillo?accion=editar&idPlatillo=<%= platillo.getIdPlatillo()%>"> <img src="images/modifica.png" alt="x" /> </a>       
@@ -170,36 +172,6 @@
     </div>
 </body>
 </html> 
-<%
-    //String nombre,descripcion,operacion;
-    //String precio;
-    //nombre=request.getParameter("nombre");
-    //descripcion=request.getParameter("descripcion");
-    //precio=request.getParameter("precio");
-    //ProcesarDatos(nombre,descripcion,precio);
-
-%>
 
 
 
-
-<%!
-//public String helloWorld(){
-    //return "Hola mundo";
-//}
-%>
-
-<%!//public void ProcesarDatos(String nombre,String descripcion, String precio){
-    // if (nombre!=null && descripcion!=null && precio!=null)
-    //{
-    //      System.out.println(nombre +" "+descripcion+" "+precio);
-    //    ConexionesDB conector=new ConexionesDB();
-    //  try{
-    //  conector.registrar("call registroPlatillo('" + nombre + "','" + descripcion + "'," + precio + ");");
-    // }catch(Exception e)
-    // {
-    //    System.out.println(e);
-    //}
-    //}
-//}
-%>

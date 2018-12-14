@@ -52,7 +52,6 @@
                                     <form  accion="ControladorPlatillo">
                                         <div class="form-group">  
                                             <input min='0' type="hidden" class="form-control form-rounded" name="idPlatillo" placeholder="idPlatillo" value="<%= platillo.getIdPlatillo() %>" required>
-                                            </script>
 
                                         </div>  
                                         <div class="form-group">
@@ -66,21 +65,20 @@
                                         <div class="form-group">  
                                             <label for="text">Precio:</label>
                                             <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioPlatillo" placeholder="Precio" value="<%= platillo.getPrecioPlatillo() %>" required>
-                                            </script>
 
                                         </div>  
+                                        <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" required> Confirmar datos </input>
+                                        </label>
+                                        </div> 
                                         <center>  <button type="submit" name="accion" value="Actualizar"><img src="images/ok.png" alt="x" /> </button> </center>
                                         <a href="ControladorPlatillo?accion=Platillo"> <img src="images/atras.png" alt="x" /> </a>       
                                     </form> 
                                     <br>
 
                                 </div> 
-                                <br><br>
-                                <div class="form-group form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox"> Habilitar edicion</input>
-                                    </label>
-                                </div>   
+                                  
 
                             </div>
                         </div>
