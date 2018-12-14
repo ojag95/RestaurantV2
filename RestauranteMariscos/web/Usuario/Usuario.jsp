@@ -6,8 +6,8 @@
 
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="Modelo.Platillo"%>
-<%@page import="ModeloDAO.PlatilloDAO"%>
+<%@page import="Modelo.Usuario"%>
+<%@page import="ModeloDAO.UsuarioDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import =" java.net.*" %>
 <%@page import="CodeHelpers.ConexionesDB"%>
@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/bootstrap.min.js"></script>
-        <title>Platillos</title>
+        <title>Usuario</title>
     </head>
  
     <div style="background-image:url(images/fondo.jpg)">
@@ -69,50 +69,37 @@
             <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(images/fondo.jpg) no-repeat left center; background-size: cover;">
 
                 <!-- Crea un componente que permite resaltar un texto  -->
-                <%
-
-                    //ConexionesDB conector;
-                    //conector=new ConexionesDB();
-                    //ResultSet resultado=null;
-                    //try{
-                    //System.out.println(conector.probarConexion());
-                    //resultado=conector.consulta("select * from Platillos;");
-                    //}catch(Exception e)
-                    //{
-                    //    System.out.println(e);
-                    //}
-                %>        
+    
                 <div class="row"  >
                     <link rel="stylesheet" href="css/main.css">
                     <div class="col-sm-8" >
                         <div class="card">
                             <div class="card bg-dark text-white">
-                                <h2>Carta</h2>
+                                <h2>Usuarios registrados</h2>
                             </div>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th> ID </th>
-                                        <th>Platillo</th>
-                                        <th>Precio</th>
-                                        <th>Operaciones</th>
+                                        <th>Nombre</th>
+                                        <th>Usuario</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%                            PlatilloDAO dao = new PlatilloDAO();
-                                        List<Platillo> list = dao.listar();
-                                        Iterator<Platillo> iterador = list.iterator();
-                                        Platillo platillo = null;
+                                    <%  UsuarioDAO dao = new UsuarioDAO();
+                                        List<Usuario> list = dao.listar();
+                                        Iterator<Usuario> iterador = list.iterator();
+                                        Usuario usuario = null;
                                         while (iterador.hasNext()) {
-                                            platillo = iterador.next();
+                                            usuario = iterador.next();
                                     %>
                                     <tr>
-                                        <td><%= platillo.getIdPlatillo()%></td>
-                                        <td><%= platillo.getNombrePlatillo()%> <br><small><%= platillo.getDescripcionPlatillo()%></small></td>
-                                        <td>$<%= platillo.getPrecioPlatillo()%></td>
+                                        <td><%= usuario.getidUsuario()%></td>
+                                        <td><%= usuario.getnombre()%> <br><small><%= usuario.getpuesto()%></small></td>
+                                        <td><%= usuario.getusr()%></td>
                                         <td>                            
-                                             <a href="ControladorPlatillo?accion=editar&idPlatillo=<%= platillo.getIdPlatillo()%>"> <img src="images/modifica.png" alt="x" /> </a>       
-                                            <a href="ControladorPlatillo?accion=eliminar&idPlatillo=<%= platillo.getIdPlatillo()%>"> <img src="images/elimina.png" alt="x" /> </a>       
+                                             <a href="ControladorUsuario?accion=editar&idUsuario=<%= usuario.getidUsuario()%>"> <img src="images/modifica.png" alt="x" /> </a>       
+                                            <a href="ControladorUsuario?accion=eliminar&idUsuario=<%= usuario.getidUsuario()%>"> <img src="images/elimina.png" alt="x" /> </a>       
                                         </td>
                                     </tr>
                                     <%}%>
@@ -123,23 +110,37 @@
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card bg-dark text-white">
-                                <h2>Platillos</h2>
+                                <h2>Registro</h2>
                             </div>   
                             <div class="card-body">     
                                 <div class="container">
                                     <link rel="stylesheet" href="css/main.css">
-                                    <form  accion="ControladorPlatillo">       
+                                    <form  accion="ControladorUsuario">       
                                         <div class="form-group">
-                                            <label for="text">Nombre platillo:</label>
-                                            <input type="text" class="form-control form-rounded" name="nombrePlatillo" placeholder="Nombre del platillo" required>
+                                            <label for="text">Nombre usuario:</label>
+                                            <input type="text" class="form-control form-rounded" name="nombre" placeholder="Nombre completo" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="text">Descripción:</label>
-                                            <input type="text" class="form-control form-rounded" name="descripcion" placeholder="Descripcion" required>
+                                            <label for="text">Puesto:</label>
+                                            <input type="text" class="form-control form-rounded" name="puesto" placeholder="Puesto del empleado" required>
                                         </div>
                                         <div class="form-group">  
-                                            <label for="text">Precio:</label>
-                                            <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioPlatillo" placeholder="Precio" required>
+                                            <label for="text">Edad:</label>
+                                            <input min='0' type="number" class="form-control form-rounded" name="edad" placeholder="Edad" required>
+                                            </script>
+
+                                        </div>
+                                         <div class="form-group">
+                                            <label for="text">Domicilio:</label>
+                                            <input type="text" class="form-control form-rounded" name="domicilio" placeholder="Direccion" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text">Usuario:</label>
+                                            <input type="text" class="form-control form-rounded" name="usr" placeholder="Usuario" required>
+                                        </div>
+                                        <div class="form-group">  
+                                            <label for="text">Contraseña:</label>
+                                            <input type="text"  class="form-control form-rounded" name="contrasenia" placeholder="Contraseña" required>
                                             </script>
 
                                         </div>

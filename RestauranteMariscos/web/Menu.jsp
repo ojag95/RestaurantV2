@@ -61,7 +61,7 @@
                                     <a class="nav-link"  href="ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="Usuarios.jsp" >Usuarios <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="ControladorUsuario?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link" href="Cuentas.jsp" >Cuentas<span class="sr-only">(current)</span></a>
