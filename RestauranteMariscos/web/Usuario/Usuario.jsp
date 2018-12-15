@@ -26,7 +26,7 @@
         <script src="js/bootstrap.min.js"></script>
         <title>Usuario</title>
     </head>
- 
+
     <div style="background-image:url(images/fondo.jpg)">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -43,14 +43,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="Menu.jsp">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="Platillo/ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
+                        <li class="nav-item "> 
+
+                            <a class="nav-link"  href="ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="Usuario/Usuarios.jsp" >Usuarios <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ControladorUsuario?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="Cuentas.jsp" >Cuentas<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ControladorBebida?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
@@ -69,7 +70,7 @@
             <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(images/fondo.jpg) no-repeat left center; background-size: cover;">
 
                 <!-- Crea un componente que permite resaltar un texto  -->
-    
+
                 <div class="row"  >
                     <link rel="stylesheet" href="css/main.css">
                     <div class="col-sm-8" >
@@ -98,7 +99,7 @@
                                         <td><%= usuario.getnombre()%> <br><small><%= usuario.getpuesto()%></small></td>
                                         <td><%= usuario.getusr()%></td>
                                         <td>                            
-                                             <a href="ControladorUsuario?accion=editar&idUsuario=<%= usuario.getidUsuario()%>"> <img src="images/modifica.png" alt="x" /> </a>       
+                                            <a href="ControladorUsuario?accion=editar&idUsuario=<%= usuario.getidUsuario()%>"> <img src="images/modifica.png" alt="x" /> </a>       
                                             <a href="ControladorUsuario?accion=eliminar&idUsuario=<%= usuario.getidUsuario()%>"> <img src="images/elimina.png" alt="x" /> </a>       
                                         </td>
                                     </tr>
@@ -130,7 +131,7 @@
                                             </script>
 
                                         </div>
-                                         <div class="form-group">
+                                        <div class="form-group">
                                             <label for="text">Domicilio:</label>
                                             <input type="text" class="form-control form-rounded" name="domicilio" placeholder="Direccion" >
                                         </div>
@@ -144,18 +145,18 @@
                                             </script>
 
                                         </div>
-                                <div class="form-group form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" required> Confirmar informacion </input>
-                                    </label>
-                                </div> 
+                                        <div class="form-group form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" required> Confirmar informacion </input>
+                                            </label>
+                                        </div> 
                                         <center>  <button type="submit" name="accion" value="Agregar"><img src="images/agrega.png" alt="x" /> </button> </center>   </form> 
                                     <br>
 
 
 
                                 </div> 
-                                  
+
 
                             </div>
                         </div>

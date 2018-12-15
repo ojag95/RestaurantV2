@@ -23,6 +23,7 @@ public class PlatilloDAO implements CRUDPlatillos {
         try {
             resultadoConsulta = conector.consulta("select * from Platillos;");
             while (resultadoConsulta.next()) {
+                System.out.println("imprime");
                 Platillo objetoPlatillo = new Platillo();
                 objetoPlatillo.setIdPlatillo(resultadoConsulta.getInt("idPlatillo"));
                 objetoPlatillo.setNombrePlatillo(resultadoConsulta.getString("nombrePlatillo"));

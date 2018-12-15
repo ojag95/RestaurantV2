@@ -6,8 +6,8 @@
 
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="Modelo.Platillo"%>
-<%@page import="ModeloDAO.PlatilloDAO"%>
+<%@page import="Modelo.Bebida"%>
+<%@page import="ModeloDAO.BebidaDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import =" java.net.*" %>
 <%@page import="CodeHelpers.ConexionesDB"%>
@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/bootstrap.min.js"></script>
-        <title>Platillos</title>
+        <title>Bebidas</title>
     </head>
 
     <div style="background-image:url(images/fondo.jpg)">
@@ -45,14 +45,14 @@
                         </li>
                         <li class="nav-item "> 
 
-                        <a class="nav-link"  href="ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="ControladorUsuario?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="ControladorBebida?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>
-                        </li>
+                                    <a class="nav-link"  href="ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="ControladorUsuario?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="ControladorBebida?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>
+                                </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
                         </li>
@@ -94,26 +94,26 @@
                                 <thead>
                                     <tr>
                                         <th> ID </th>
-                                        <th>Platillo</th>
+                                        <th>Bebida</th>
                                         <th>Precio</th>
                                         <th>Operaciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%  PlatilloDAO dao = new PlatilloDAO();
-                                        List<Platillo> list = dao.listar();
-                                        Iterator<Platillo> iterador = list.iterator();
-                                        Platillo platillo = null;
+                                        <%  BebidaDAO dao = new BebidaDAO();
+                                        List<Bebida> list = dao.listar();
+                                        Iterator<Bebida> iterador = list.iterator();
+                                        Bebida bebida = null;
                                         while (iterador.hasNext()) {
-                                            platillo = iterador.next();
+                                            bebida = iterador.next();
                                     %>
                                     <tr>
-                                        <td><%= platillo.getIdPlatillo()%></td>
-                                        <td><%= platillo.getNombrePlatillo()%> <br><small><%= platillo.getDescripcionPlatillo()%></small></td>
-                                        <td>$<%= platillo.getPrecioPlatillo()%></td>
+                                        <td><%= bebida.getIdBebida()%></td>
+                                        <td><%= bebida.getNombreBebida()%> <br><small><%= bebida.getDescripcionBebida()%></small></td>
+                                        <td>$<%= bebida.getPrecioBebida()%></td>
                                         <td>                            
-                                            <a href="ControladorPlatillo?accion=editar&idPlatillo=<%= platillo.getIdPlatillo()%>"> <img src="images/modifica.png" alt="x" /> </a>       
-                                            <a href="ControladorPlatillo?accion=eliminar&idPlatillo=<%= platillo.getIdPlatillo()%>"> <img src="images/elimina.png" alt="x" /> </a>       
+                                             <a href="ControladorBebida?accion=editar&idBebida=<%= bebida.getIdBebida()%>"> <img src="images/modifica.png" alt="x" /> </a>       
+                                            <a href="ControladorBebida?accion=eliminar&idBebida=<%= bebida.getIdBebida()%>"> <img src="images/elimina.png" alt="x" /> </a>       
                                         </td>
                                     </tr>
                                     <%}%>
@@ -124,25 +124,29 @@
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card bg-dark text-white">
-                                <h2>Platillos</h2>
+                                <h2>Bebidas</h2>
                             </div>   
                             <div class="card-body">     
                                 <div class="container">
                                     <link rel="stylesheet" href="css/main.css">
-                                    <form  accion="ControladorPlatillo">       
+                                    <form  accion="ControladorBebida">       
                                         <div class="form-group">
                                             <label for="text">Nombre platillo:</label>
-                                            <input type="text" class="form-control form-rounded" name="nombrePlatillo" placeholder="Nombre del platillo" required>
+                                            <input type="text" class="form-control form-rounded" name="nombreBebida" placeholder="Nombre de la bebida" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="text">Descripción:</label>
-                                            <input type="text" class="form-control form-rounded" name="descripcion" placeholder="Descripcion" required>
+                                            <input type="text" class="form-control form-rounded" name="descripcion" placeholder="Descripcion" >
                                         </div>
                                         <div class="form-group">  
                                             <label for="text">Precio:</label>
-                                            <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioPlatillo" placeholder="Precio" required>
+                                            <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioBebida" placeholder="Precio" required>
                                             </script>
 
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text">Tipo:</label>
+                                            <input type="text" class="form-control form-rounded" name="Tipo" placeholder="Tipo" required> <select name="OS"> <option value="1">Normal</option>  <option value="2">Cerveza</option>  <option value="2">Preparada</option>  </select>
                                         </div>
                                         <div class="form-group form-check">
                                             <label class="form-check-label">

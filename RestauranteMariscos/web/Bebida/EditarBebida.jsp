@@ -6,8 +6,8 @@
 
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="Modelo.Usuario"%>
-<%@page import="ModeloDAO.UsuarioDAO"%>
+<%@page import="Modelo.Bebida"%>
+<%@page import="ModeloDAO.BebidaDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import =" java.net.*" %>
 <%@page import="CodeHelpers.ConexionesDB"%>
@@ -24,13 +24,13 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/bootstrap.min.js"></script>
-        <title>Editar Usuario</title>
+        <title>Platillos</title>
     </head>
     
         <%
-            UsuarioDAO dao = new UsuarioDAO();
-            int idUsuario = Integer.parseInt((String) request.getAttribute("idUsuario"));
-            Usuario platillo = (Usuario) dao.listar(idUsuario);
+            BebidaDAO dao = new BebidaDAO();
+            int idBebida = Integer.parseInt((String) request.getAttribute("idBebida"));
+            Bebida bebida = (Bebida) dao.listar(idBebida);
         %>
 
     <div style="background-image:url(images/fondo.jpg)">
@@ -47,52 +47,41 @@
                     <div class="card">
 
                         <div class="card bg-dark text-white">
-                            <h2>Editar Usuario</h2>
+                            <h2>Editar Bebida</h2>
                         </div>   
                         <div class="card-body">     
                             <div class="container">
                                 <link rel="stylesheet" href="css/style.css">
                                 <link rel="stylesheet" href="css/main.css">
-                                <form  accion="ControladorUsuario">
+                               <form  accion="Controlador">
                                     <div class="form-group">  
-                                        <input min='0' type="hidden" class="form-control form-rounded" name="idUsuario" placeholder="idUsuario" value="<%= platillo.getidUsuario()%>" required>
+                                        <input min='0' type="hidden" class="form-control form-rounded" name="idBebida" placeholder="idPlatillo" value="<%= bebida.getIdBebida()%>" required>
 
                                     </div>  
                                     <div class="form-group">
-                                        <label for="text">Nombre:</label>
-                                        <input type="text" class="form-control form-rounded" name="nombre" placeholder="nombre" value="<%= platillo.getnombre()%>" required>
+                                        <label for="text">Nombre de la Bebida:</label>
+                                        <input type="text" class="form-control form-rounded" name="nombreBebida" placeholder="Nombre de la Bebida" value="<%= bebida.getNombreBebida()%>" required>
                                     </div>
-                                     <div class="form-group">
-                                            <label for="text">Puesto:</label>
-                                            <input type="text" class="form-control form-rounded" name="puesto" placeholder="Puesto del empleado" value="<%= platillo.getnombre()%>"  required>
-                                        </div>
-                                        <div class="form-group">  
-                                            <label for="text">Edad:</label>
-                                            <input min='0' type="number" class="form-control form-rounded" name="edad" placeholder="Edad" value="<%= platillo.getnombre()%>"  required>
-                                            </script>
+                                    <div class="form-group">
+                                        <label for="text">Descripción:</label>
+                                        <input type="text" class="form-control form-rounded" name="descripcion" placeholder="Descripcion" value="<%= bebida.getDescripcionBebida()%>" required>
+                                    </div>
+                                    <div class="form-group">  
+                                        <label for="text">Precio:</label>
+                                        <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioBebida" placeholder="Precio" value="<%= bebida.getPrecioBebida()%>" required>
 
-                                        </div>
+                                    </div>
                                          <div class="form-group">
-                                            <label for="text">Domicilio:</label>
-                                            <input type="text" class="form-control form-rounded" name="domicilio" value="<%= platillo.getdomicilio()%>" >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="text">Usuario:</label>
-                                            <input type="text" class="form-control form-rounded" name="usr" placeholder="Usuario" value="<%= platillo.getusr()%>"  required>
-                                        </div>
-                                        <div class="form-group">  
-                                            <label for="text">Contraseña:</label>
-                                            <input type="text"  class="form-control form-rounded" name="contrasenia" placeholder="Contraseña" value="<%= platillo.getcontrasenia()%>"  required>
-                                            </script>
-
-                                        </div>
+                                        <label for="text">Tipo:</label>
+                                        <input type="text" class="form-control form-rounded" name="Tipo" placeholder="Tipo" value="<%= bebida.getTipo()%>" required>
+                                    </div>
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" required> Confirmar datos </input>
                                         </label>
                                     </div> 
                                     <center>  <button type="submit" name="accion" value="Actualizar"><img src="images/ok.png" alt="x" /> </button> </center>
-                                    <a href="ControladorUsuario?accion=Usuario"> <img src="images/atras.png" alt="x" /> </a>       
+                                    <a href="ControladorBebida?accion=Bebida"> <img src="images/atras.png" alt="x" /> </a>       
                                 </form> 
                                 <br>
 

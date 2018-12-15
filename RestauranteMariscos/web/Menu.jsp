@@ -64,7 +64,7 @@
                                     <a class="nav-link" href="ControladorUsuario?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="Cuentas.jsp" >Cuentas<span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="ControladorBebida?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>

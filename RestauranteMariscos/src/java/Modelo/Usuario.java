@@ -34,8 +34,28 @@ public class Usuario {
 
     }
 
-    public int getidUsuario() {
-        return idUsuario;
+    public void setedad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setnombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setpuesto(String puesto) {
+        this.puesto = puesto;
+    }
+
+    public void setdomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public void setusr(String usr) {
+        this.usr = usr;
+    }
+
+    public void setcontrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public void setidUsuario(int idUsuario) {
@@ -46,48 +66,28 @@ public class Usuario {
         return nombre;
     }
 
-    public void setnombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getpuesto() {
         return puesto;
-    }
-
-    public void setpuesto(String puesto) {
-        this.puesto = puesto;
     }
 
     public int getedad() {
         return edad;
     }
 
-    public void setedad(int edad) {
-        this.edad = edad;
-    }
-
     public String getdomicilio() {
         return domicilio;
-    }
-
-    public void setdomicilio(String domicilio) {
-        this.domicilio = domicilio;
     }
 
     public String getusr() {
         return usr;
     }
 
-    public void setusr(String usr) {
-        this.usr = usr;
-    }
-
     public String getcontrasenia() {
         return contrasenia;
     }
 
-    public void setcontrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public int getidUsuario() {
+        return idUsuario;
     }
 
 }
