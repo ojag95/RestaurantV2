@@ -5,6 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="Modelo.Usuario"%>
+<%@page import="ModeloDAO.UsuarioDAO"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import =" java.net.*" %>
+<%@page import="CodeHelpers.ConexionesDB"%>
 
 
 <!DOCTYPE html>
@@ -151,18 +158,18 @@
     <body>
         <!--	<center><titul>Marisqueria "El puerto de Don Roque"</titul></center>  -->
         <div class="login-form">
-            <form action="Menu.jsp" method="post">    
+            <form action="ok">    
                 <div class="avatar"> <img src="images/avatar.png" alt="Avatar"> </div>   
                 <h2 class="text-center"><strong>Inicio de sesión</strong></h2>    
                 <div class="form-group">
-                    <input type="text" class="form-control input-lg" name="username" placeholder="Usuario" required="required">	
+                    <input type="text" class="form-control input-lg" name="usr" placeholder="Usuario" required="required">	
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control input-lg" name="password" placeholder="Contraseña" required="required">
-                </div>        
+                    <input type="text" class="form-control input-lg" name="contrasenia" placeholder="Contraseña" required="required">
+                </div>     
                 <div class="form-group clearfix">
                     <label class="pull-left checkbox-inline"><input type="checkbox"> Recordar </label>
-                    <button type="submit" class="btn btn-primary btn-lg pull-right">Acceder</button>
+                    <button type="submit" name="accion" value="entrar" class="btn btn-primary btn-lg pull-right">Acceder</button>
                 </div>		
             </form>
         </div>

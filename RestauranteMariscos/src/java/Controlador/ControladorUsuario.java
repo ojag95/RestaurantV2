@@ -35,7 +35,7 @@ public class ControladorUsuario extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    String urlUsuario = "Usuario/Usuario.jsp";
+    String urlUsuarios = "Usuario/Usuario.jsp";
     String urlEditU = "Usuario/EditarUsuario.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -46,10 +46,10 @@ public class ControladorUsuario extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ControladorPlatillo</title>");
+            out.println("<title>Servlet ControladorUsuario</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ControladorPlatillo at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ControladorUsuario at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -72,10 +72,8 @@ public class ControladorUsuario extends HttpServlet {
         String acceso = "";
         String action = request.getParameter("accion");
         System.out.println(action);
-
         if (action.equalsIgnoreCase("Usuario")) {
-            acceso = urlUsuario;
-
+            acceso = urlUsuarios;
         } else if (action.equalsIgnoreCase("Agregar")) {
             String nombre = request.getParameter("nombre");
             String puesto = request.getParameter("puesto");
@@ -91,22 +89,17 @@ public class ControladorUsuario extends HttpServlet {
             usuario.setusr(usr);
             usuario.setcontrasenia(contrasenia);
             usuarioDao.Usuario(usuario);
-
-            acceso = urlUsuario;
-
+            acceso = urlUsuarios;
         } else if (action.equalsIgnoreCase("eliminar")) {
             int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
             usuario.setidUsuario(idUsuario);
             usuarioDao.eliminar(idUsuario);
-            acceso = urlUsuario;
-
+            acceso = urlUsuarios;
         } else if (action.equalsIgnoreCase("editar")) {
             request.setAttribute("idUsuario", request.getParameter("idUsuario"));
             acceso = urlEditU;
-
         } else if (action.equalsIgnoreCase("Actualizar")) {
             int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
-
             String nombre = request.getParameter("nombre");
             String puesto = request.getParameter("puesto");
             int edad = Integer.parseInt(request.getParameter("edad"));
@@ -120,8 +113,8 @@ public class ControladorUsuario extends HttpServlet {
             usuario.setdomicilio(domicilio);
             usuario.setusr(usr);
             usuario.setcontrasenia(contrasenia);
-
-            acceso = urlUsuario;
+            usuarioDao.editar(usuario);
+            acceso = urlUsuarios;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

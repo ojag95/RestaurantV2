@@ -31,11 +31,10 @@ public class Usuario {
         this.domicilio = domicilio;
         this.usr = usr;
         this.contrasenia = contrasenia;
-
     }
 
-    public void setedad(int edad) {
-        this.edad = edad;
+    public void setidUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public void setnombre(String nombre) {
@@ -46,20 +45,20 @@ public class Usuario {
         this.puesto = puesto;
     }
 
-    public void setdomicilio(String domicilio) {
-        this.domicilio = domicilio;
-    }
-
-    public void setusr(String usr) {
-        this.usr = usr;
+    public void setedad(int edad) {
+        this.edad = edad;
     }
 
     public void setcontrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
 
-    public void setidUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setdomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public void setusr(String usr) {
+        this.usr = usr;
     }
 
     public String getnombre() {

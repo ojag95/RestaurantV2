@@ -24,13 +24,13 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/bootstrap.min.js"></script>
-        <title>Editar Usuario</title>
+        <title>Usuarios</title>
     </head>
     
         <%
             UsuarioDAO dao = new UsuarioDAO();
             int idUsuario = Integer.parseInt((String) request.getAttribute("idUsuario"));
-            Usuario platillo = (Usuario) dao.listar(idUsuario);
+            Usuario usuario = (Usuario) dao.listar(idUsuario);
         %>
 
     <div style="background-image:url(images/fondo.jpg)">
@@ -55,37 +55,34 @@
                                 <link rel="stylesheet" href="css/main.css">
                                 <form  accion="ControladorUsuario">
                                     <div class="form-group">  
-                                        <input min='0' type="hidden" class="form-control form-rounded" name="idUsuario" placeholder="idUsuario" value="<%= platillo.getidUsuario()%>" required>
+                                        <input min='0' type="hidden" class="form-control form-rounded" name="idUsuario" placeholder="idUsuario" value="<%= usuario.getidUsuario()%>" required>
 
                                     </div>  
                                     <div class="form-group">
-                                        <label for="text">Nombre:</label>
-                                        <input type="text" class="form-control form-rounded" name="nombre" placeholder="nombre" value="<%= platillo.getnombre()%>" required>
+                                        <label for="text">Nombre Usuario:</label>
+                                        <input type="text" class="form-control form-rounded" name="nombre" placeholder="Nombre del Usuario" value="<%= usuario.getnombre()%>" required>
                                     </div>
-                                     <div class="form-group">
-                                            <label for="text">Puesto:</label>
-                                            <input type="text" class="form-control form-rounded" name="puesto" placeholder="Puesto del empleado" value="<%= platillo.getnombre()%>"  required>
-                                        </div>
-                                        <div class="form-group">  
-                                            <label for="text">Edad:</label>
-                                            <input min='0' type="number" class="form-control form-rounded" name="edad" placeholder="Edad" value="<%= platillo.getnombre()%>"  required>
-                                            </script>
+                                    <div class="form-group">
+                                        <label for="text">Puesto:</label>
+                                        <input type="text" class="form-control form-rounded" name="puesto" placeholder="puesto" value="<%= usuario.getpuesto()%>" required>
+                                    </div>
+                                    <div class="form-group">  
+                                        <label for="text">Edad:</label>
+                                        <input min='1' type="number" step="1" class="form-control form-rounded" name="edad" placeholder="edad" value="<%= usuario.getedad()%>" required>
 
-                                        </div>
-                                         <div class="form-group">
-                                            <label for="text">Domicilio:</label>
-                                            <input type="text" class="form-control form-rounded" name="domicilio" value="<%= platillo.getdomicilio()%>" >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="text">Usuario:</label>
-                                            <input type="text" class="form-control form-rounded" name="usr" placeholder="Usuario" value="<%= platillo.getusr()%>"  required>
-                                        </div>
-                                        <div class="form-group">  
-                                            <label for="text">Contraseña:</label>
-                                            <input type="text"  class="form-control form-rounded" name="contrasenia" placeholder="Contraseña" value="<%= platillo.getcontrasenia()%>"  required>
-                                            </script>
-
-                                        </div>
+                                    </div>  
+                                    <div class="form-group">
+                                        <label for="text">Domicilio:</label>
+                                        <input type="text" class="form-control form-rounded" name="domicilio" placeholder="domicilio" value="<%= usuario.getdomicilio()%>" required>
+                                    </div> 
+                                    <div class="form-group">
+                                        <label for="text">Usuario:</label>
+                                        <input type="text" class="form-control form-rounded" name="usr" placeholder="usr" value="<%= usuario.getusr()%>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="text">Contraseña:</label>
+                                        <input type="text" class="form-control form-rounded" name="contrasenia" placeholder="contrasenia" value="<%= usuario.getcontrasenia()%>" required>
+                                    </div>
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" required> Confirmar datos </input>

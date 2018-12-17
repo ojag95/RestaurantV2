@@ -48,7 +48,7 @@
                         <a class="nav-link"  href="ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="ControladorUsuario?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ControladorUsuarios?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="ControladorBebida?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>

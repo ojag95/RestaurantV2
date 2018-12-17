@@ -9,10 +9,10 @@ import Modelo.Usuario;
 import java.util.List;
 public interface CRUDUsuarios {
     public List listar();
-    public Usuario listar (int id);
+    public Usuario listar (int idUsuario);
     public boolean agregar(Usuario usuario);
     public boolean editar(Usuario usuario);
-    public boolean eliminar (int id);
+    public boolean eliminar (int idUsuario);
 
     
 }
