@@ -106,8 +106,10 @@
                                         Platillo platillo = null;
                                         while (iterador.hasNext()) {
                                             platillo = iterador.next();
+                                             
                                     %>
                                     <tr>
+                                       
                                         <td><%= platillo.getIdPlatillo()%></td>
                                         <td><%= platillo.getNombrePlatillo()%> <br><small><%= platillo.getDescripcionPlatillo()%></small></td>
                                         <td>$<%= platillo.getPrecioPlatillo()%></td>
@@ -124,6 +126,7 @@
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card bg-dark text-white">
+                             
                                 <h2>Platillos</h2>
                             </div>   
                             <div class="card-body">     

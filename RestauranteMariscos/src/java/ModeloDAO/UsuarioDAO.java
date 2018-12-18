@@ -22,7 +22,7 @@ public class UsuarioDAO implements CRUDUsuarios {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         ResultSet resultadoConsulta = null;
         try {
-            resultadoConsulta = conector.consulta("select * from Usuario;");
+            resultadoConsulta = conector.consulta("select * from Usuario");
             while (resultadoConsulta.next()) {
                 System.out.println("imprime");
                 Usuario objetoUsuario = new Usuario();
@@ -91,7 +91,7 @@ public class UsuarioDAO implements CRUDUsuarios {
     public boolean eliminar(int idUsuario) {
         try {
             System.out.println("eliminar");
-            conector.registrar("delete from Usuario where idUsuario=" + idUsuario);
+            conector.eliminar("delete from Usuario where idUsuario=" + idUsuario);
         } catch (Exception e) {
 
         }

@@ -158,7 +158,7 @@
     <body>
         <!--	<center><titul>Marisqueria "El puerto de Don Roque"</titul></center>  -->
         <div class="login-form">
-            <form action="ok">    
+            <form action="Menu.jsp">    
                 <div class="avatar"> <img src="images/avatar.png" alt="Avatar"> </div>   
                 <h2 class="text-center"><strong>Inicio de sesión</strong></h2>    
                 <div class="form-group">
@@ -169,7 +169,7 @@
                 </div>     
                 <div class="form-group clearfix">
                     <label class="pull-left checkbox-inline"><input type="checkbox"> Recordar </label>
-                    <button type="submit" name="accion" value="entrar" class="btn btn-primary btn-lg pull-right">Acceder</button>
+                    <button type="submit" class="btn btn-primary btn-lg pull-right">Acceder</button>
                 </div>		
             </form>
         </div>

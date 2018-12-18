@@ -21,7 +21,7 @@ public class PlatilloDAO implements CRUDPlatillos {
         ArrayList<Platillo> listaPlatillos = new ArrayList<>();
         ResultSet resultadoConsulta = null;
         try {
-            resultadoConsulta = conector.consulta("select * from Platillos;");
+            resultadoConsulta = conector.consulta("select * from Platillos order by idPlatillo");
             while (resultadoConsulta.next()) {
                 System.out.println("imprime");
                 Platillo objetoPlatillo = new Platillo();
@@ -62,7 +62,10 @@ public class PlatilloDAO implements CRUDPlatillos {
 
         try {
             System.out.println("agregar");
-            conector.registrar("insert into Platillos (nombrePlatillo, descripcion, precioPlatillo)values('" + platillo.getNombrePlatillo() + "','" + platillo.getDescripcionPlatillo() + "','" + platillo.getPrecioPlatillo() + "');");
+            System.out.println(platillo.getNombrePlatillo());
+            String inser="insert into Platillos (nombrePlatillo, descripcion, precioPlatillo)values('" + platillo.getNombrePlatillo() + "','" + platillo.getDescripcionPlatillo() + "'," + platillo.getPrecioPlatillo() + ")";
+            System.out.println(inser);
+            conector.registrar(inser);
         } catch (Exception e) {
 
         }
@@ -73,7 +76,7 @@ public class PlatilloDAO implements CRUDPlatillos {
     public boolean editar(Platillo platillo) {
        try {
             System.out.println("actualizar");
-            String sql= "update Platillos set nombrePlatillo='"+ platillo.getNombrePlatillo()+"',descripcion='"+platillo.getDescripcionPlatillo()+"',precioPlatillo='"+ platillo.getPrecioPlatillo() + "'where idPlatillo=" + platillo.getIdPlatillo();
+            String sql= "update Platillos set nombrePlatillo='"+ platillo.getNombrePlatillo()+"',descripcion='"+platillo.getDescripcionPlatillo()+"',precioPlatillo="+ platillo.getPrecioPlatillo() + " where idPlatillo=" + platillo.getIdPlatillo();
             conector.registrar(sql);
         } catch (Exception e) {
 
@@ -85,9 +88,9 @@ public class PlatilloDAO implements CRUDPlatillos {
     public boolean eliminar(int idPlatillo) {
         try {
             System.out.println("eliminar");
-            conector.registrar("delete from Platillos where idPlatillo=" + idPlatillo);
+            conector.eliminar("delete from Platillos where idPlatillo="+ idPlatillo);
         } catch (Exception e) {
-
+            System.out.println(e);
         }
         return false;
     }

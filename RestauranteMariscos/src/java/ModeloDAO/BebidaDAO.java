@@ -21,7 +21,7 @@ public class BebidaDAO implements CRUDBebidas {
         ArrayList<Bebida> listaBebidas = new ArrayList<>();
         ResultSet resultadoConsulta = null;
         try {
-            resultadoConsulta = conector.consulta("select * from Bebida;");
+            resultadoConsulta = conector.consulta("select * from Bebida");
             while (resultadoConsulta.next()) {
                 System.out.println("imprime");
                 Bebida objetoBebida = new Bebida();
@@ -87,7 +87,7 @@ public class BebidaDAO implements CRUDBebidas {
     public boolean eliminar(int idBebida) {
         try {
             System.out.println("eliminar");
-            conector.registrar("delete from Bebida where idBebida=" + idBebida);
+            conector.eliminar("delete from Bebida where idBebida=" + idBebida);
         } catch (Exception e) {
 
         }

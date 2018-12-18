@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConexionesDB {
      /*
@@ -35,16 +37,18 @@ public class ConexionesDB {
 
   }
  }*/ 
-    String conexion="jdbc:mariadb://localhost:3306/Restaurant";
-    String userdb="root";
+    String conexion="jdbc:oracle:thin:@127.0.0.1:1521:xe";
+    String userdb="Restaurant";
     String passdb="sasa";
     Connection conn;
     PreparedStatement sentencia;
     public String probarConexion() throws ClassNotFoundException{
         String estado="";
     try {
-            Class.forName("org.mariadb.jdbc.Driver");
+       DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
+           Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(conexion, userdb, passdb);
+           // Connection conn = DriverManager.getConnection(bdurl, userdb, passdb);
             if (conn != null) {
                 conn.close();
                 estado="Conectado a la base de datos";
@@ -62,7 +66,7 @@ public class ConexionesDB {
     {
         String estado="";
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(conexion, userdb, passdb);
             if (conn != null) {
                 sentencia = conn.prepareStatement(SQL);
@@ -81,12 +85,11 @@ public class ConexionesDB {
     {
         ResultSet resultado=null;
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+         Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(conexion, userdb, passdb);
              Statement sentencia = conn.createStatement();
              resultado =sentencia.executeQuery(SQL);
-             conn.close();
-                    
+           
         } 
         catch (SQLException ex) 
         {
@@ -101,11 +104,11 @@ public class ConexionesDB {
     {
         String estado="";
         try {
-           Class.forName("org.mariadb.jdbc.Driver");
+        Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(conexion, userdb, passdb);
             if (conn != null) {
                 sentencia = conn.prepareStatement(SQL);
-                sentencia.execute();  
+                sentencia.execute(SQL);  
                 conn.close();
                 estado="La eliminacion se ha realizado exitosamente";              
             }   
@@ -115,5 +118,17 @@ public class ConexionesDB {
                 return estado;
     
     }
+     
+     public void cerrarConexion()
+     {
+        try {
+            conn = DriverManager.getConnection(conexion, userdb, passdb);
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexionesDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         
+     } 
     
 }
