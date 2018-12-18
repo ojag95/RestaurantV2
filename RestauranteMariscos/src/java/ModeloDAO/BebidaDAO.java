@@ -21,7 +21,7 @@ public class BebidaDAO implements CRUDBebidas {
         ArrayList<Bebida> listaBebidas = new ArrayList<>();
         ResultSet resultadoConsulta = null;
         try {
-            resultadoConsulta = conector.consulta("select * from Bebida");
+            resultadoConsulta = conector.consulta("select * from Bebida order by idBebida");
             while (resultadoConsulta.next()) {
                 System.out.println("imprime");
                 Bebida objetoBebida = new Bebida();
@@ -64,7 +64,7 @@ public class BebidaDAO implements CRUDBebidas {
 
         try {
             System.out.println("agregar");
-            conector.registrar("insert into Bebida (nombreBebida, descripcion, precioBebida, Tipo)values('" + bebida.getNombreBebida() + "','" + bebida.getDescripcionBebida() + "','" + bebida.getPrecioBebida() + "','" + bebida.getTipo() +"');");
+            conector.registrar("insert into Bebida (nombreBebida, descripcion, precioBebida, Tipo)values('" + bebida.getNombreBebida() + "','" + bebida.getDescripcionBebida() + "'," + bebida.getPrecioBebida() + ",'" + bebida.getTipo() +"')");
         } catch (Exception e) {
 
         }

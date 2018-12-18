@@ -22,7 +22,7 @@ public class UsuarioDAO implements CRUDUsuarios {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         ResultSet resultadoConsulta = null;
         try {
-            resultadoConsulta = conector.consulta("select * from Usuario");
+            resultadoConsulta = conector.consulta("select * from Usuario order by idUsuario");
             while (resultadoConsulta.next()) {
                 System.out.println("imprime");
                 Usuario objetoUsuario = new Usuario();
@@ -68,7 +68,7 @@ public class UsuarioDAO implements CRUDUsuarios {
 
         try {
             System.out.println("agregar");
-            conector.registrar("insert into Usuario (nombre, puesto, edad, domicilio, usr, contrasenia)values('" + usuario.getnombre() + "','" + usuario.getpuesto() + "','" + usuario.getedad() + "','" + usuario.getdomicilio() + "','" + usuario.getusr() + "','" + usuario.getcontrasenia() + "');");
+            conector.registrar("insert into Usuario (nombre, puesto, edad, domicilio, usr, contrasenia)values('" + usuario.getnombre() + "','" + usuario.getpuesto() + "'," + usuario.getedad() + ",'" + usuario.getdomicilio() + "','" + usuario.getusr() + "','" + usuario.getcontrasenia() + "')");
         } catch (Exception e) {
 
         }
