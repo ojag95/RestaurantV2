@@ -4,15 +4,12 @@
  * and open the template in the editor.
  */
 package Interfaces;
-
-import Modelo.Bebida;
+import Modelo.Producto;
 import java.util.List;
 public interface CRUDBebidas {
     public List listar();
-    public Bebida listar (int idBebida);
-    public boolean agregar(Bebida bebida);
-    public boolean editar(Bebida bebida);
-    public boolean eliminar (int idBebida);
-
-    
+    public Producto listar (int idProducto);
+    public boolean agregar(Producto producto);
+    public boolean editar(Producto producto);
+    public boolean eliminar (int idProducto);  
 }

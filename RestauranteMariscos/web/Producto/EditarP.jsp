@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/bootstrap.min.js"></script>
-        <title>Editar Bebidas</title>
+        <title>Platillos</title>
     </head>
     
         <%
@@ -47,42 +47,43 @@
                     <div class="card">
 
                         <div class="card bg-dark text-white">
-                            <h2>Editar Bebida</h2>
+                            <h2>Editar Platillo</h2>
                         </div>   
                         <div class="card-body">     
                             <div class="container">
                                 <link rel="stylesheet" href="css/style.css">
                                 <link rel="stylesheet" href="css/main.css">
-                               <form  accion="ControladorProducto">
-                                   
-                                    <input type="hidden" class="form-control form-rounded" name="idProducto"  value="<%= producto.getIdProducto()%>" required>
+                                <form  accion="ControladorProducto">
+                                          <input type="hidden" class="form-control form-rounded" name="idProducto"  value="<%= producto.getIdProducto()%>" required>
                                        
-                                     <div class="form-group">
-                                            <label for="text">Nombre bebida:</label>
-                                            <input type="text" class="form-control form-rounded" name="nombreProducto" placeholder="Nombre de la bebida" value="<%= producto.getNombreProducto()%>"value="<%= producto.getDescripcionProducto()%>"  required>
+                                    <div class="form-group">
+                                            <label for="text">Nombre producto:</label>
+                                            <input type="text" class="form-control form-rounded" name="nombreProducto" placeholder="Nombre del platillo" value="<%= producto.getNombreProducto()%>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="text">Descripción:</label>
-                                            <input type="text" class="form-control form-rounded" name="descripcion" placeholder="Descripcion" value="<%= producto.getDescripcionProducto()%>">
+                                            <input type="text" class="form-control form-rounded" name="descripcion" placeholder="Descripcion" value="<%= producto.getDescripcionProducto()%>" >
                                         </div>
                                         <div class="form-group">  
                                             <label for="text">Precio:</label>
                                             <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioProducto" placeholder="Precio" value="<%= producto.getPrecioProducto()%>" required>
                                         </div>
-                                        <input type="hidden" class="form-control form-rounded" name="tipo" value="Bebida">
+                                        <input type="hidden" class="form-control form-rounded" name="tipo" value="Platillo" >
                                         <div class="form-group">
                                             <label for="text">Categoria:</label>
-                                            <select name="categoria" placeholder="categoria" required><option ><%= producto.getCategoria()%> <option value="Normal">Normal</option>  <option value="Cerveza">Cerveza</option> 
-                                            <option value="Preparada">Preparada</option>  
+                                            <select name="categoria" placeholder="categoria" required> <option ><%= producto.getCategoria()%> </option> <option value="Entrada">Entrada</option>  <option value="Empanada">Empanada</option> 
+                                                <option value="Tostada">Tostada</option> <option value="Coctel">Coctel</option>  <option value="Caldo, cazuelas y sopas">Caldo, cazuelas y sopas</option>  
+                                                <option value="Camarones">Camarones</option> <option value="Especialidades">Especialidades</option>  <option value="Mojarra">Mojarra</option>  
+                                                <option value="Ostiones y almejas">Ostiones y almejas</option> <option value="Pulpo">Pulpo</option>  <option value="Filete">Filete</option>  
                                             </select>
                                         </div>
                                     <div class="form-group form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" required> Confirmar datos </input>
-                                        </label>
+                                         <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" required> Confirmar informacion </input>
+                                            </label>
                                     </div> 
                                     <center>  <button type="submit" name="accion" value="Actualizar"><img src="images/ok.png" alt="x" /> </button> </center>
-                                    <a href="ControladorProducto?accion=Bebida"> <img src="images/atras.png" alt="x" /> </a>       
+                                    <a href="ControladorProducto?accion=Platillo"> <img src="images/atras.png" alt="x" /> </a>       
                                 </form> 
                                 <br>
                             </div> 

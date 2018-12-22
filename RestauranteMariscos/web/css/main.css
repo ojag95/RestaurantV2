@@ -33,7 +33,10 @@ font{
     font-size: 14px;
     color: #ffffff;
 }
-
+select{
+    font-family: Montserrat-Regular;
+    font-size: 12px;	 
+}
 
 style {
 

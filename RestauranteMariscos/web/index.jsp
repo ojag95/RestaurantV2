@@ -158,15 +158,15 @@
     <body>
         <!--	<center><titul>Marisqueria "El puerto de Don Roque"</titul></center>  -->
         <div class="login-form">
-            <form action="Menu.jsp">    
+            <form action ="Acerca.jsp">    
                 <div class="avatar"> <img src="images/avatar.png" alt="Avatar"> </div>   
                 <h2 class="text-center"><strong>Inicio de sesión</strong></h2>    
                 <div class="form-group">
-                    <input type="text" class="form-control input-lg" name="usr" placeholder="Usuario" required="required">	
+                    <input type="text" class="form-control input-lg" placeholder="Usuario" required="required">	
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control input-lg" name="contrasenia" placeholder="Contraseña" required="required">
-                </div>     
+                    <input type="text" class="form-control input-lg"  placeholder="Contraseña" required="required">
+                </div> 
                 <div class="form-group clearfix">
                     <label class="pull-left checkbox-inline"><input type="checkbox"> Recordar </label>
                     <button type="submit" class="btn btn-primary btn-lg pull-right">Acceder</button>

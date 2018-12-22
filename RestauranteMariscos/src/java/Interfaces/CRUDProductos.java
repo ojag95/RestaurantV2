@@ -5,14 +5,13 @@
  */
 package Interfaces;
 
-import Modelo.Platillo;
+import Modelo.Producto;
 import java.util.List;
-public interface CRUDPlatillos {
+public interface CRUDProductos {
     public List listar();
-    public Platillo listar (int id);
-    public boolean agregar(Platillo platillo);
-    public boolean editar(Platillo platillo);
-    public boolean eliminar (int id);
-
+    public Producto listar (int idProducto);
+    public boolean agregar(Producto producto);
+    public boolean editar(Producto producto);
+    public boolean eliminar (int idProducto);
     
 }

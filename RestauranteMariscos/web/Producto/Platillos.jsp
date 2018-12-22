@@ -1,13 +1,13 @@
 <%-- 
     Document   : index
     Created on : 10/12/2018, 06:02:50 PM
-    Author     : oscar
+    Author     : oscar & genaro
 --%>
 
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="Modelo.Platillo"%>
-<%@page import="ModeloDAO.PlatilloDAO"%>
+<%@page import="Modelo.Producto"%>
+<%@page import="ModeloDAO.ProductoDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import =" java.net.*" %>
 <%@page import="CodeHelpers.ConexionesDB"%>
@@ -40,27 +40,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Menu.jsp">Home <span class="sr-only">(current)</span></a>
-                        </li>
                         <li class="nav-item "> 
 
-                        <a class="nav-link"  href="ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
+                            <a class="nav-link"  href="ControladorProducto?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="ControladorUsuario?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="ControladorBebida?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ControladorProducto?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
-                    <form class="form-inline mt-2 mt-md-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
                 </div>
             </div>
 
@@ -69,20 +62,7 @@
 
             <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(images/fondo.jpg) no-repeat left center; background-size: cover;">
 
-                <!-- Crea un componente que permite resaltar un texto  -->
-                <%
-
-                    //ConexionesDB conector;
-                    //conector=new ConexionesDB();
-                    //ResultSet resultado=null;
-                    //try{
-                    //System.out.println(conector.probarConexion());
-                    //resultado=conector.consulta("select * from Platillos;");
-                    //}catch(Exception e)
-                    //{
-                    //    System.out.println(e);
-                    //}
-                %>        
+                
                 <div class="row"  >
                     <link rel="stylesheet" href="css/main.css">
                     <div class="col-sm-8" >
@@ -93,29 +73,29 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th> ID </th>
-                                        <th>Platillo</th>
-                                        <th>Precio</th>
+                                        <th>ID</th><th>Platillo</th>
+                                        <th>Categoria</th><th>Precio</th>
                                         <th>Operaciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%  PlatilloDAO dao = new PlatilloDAO();
-                                        List<Platillo> list = dao.listar();
-                                        Iterator<Platillo> iterador = list.iterator();
-                                        Platillo platillo = null;
+                                    <%  ProductoDAO dao = new ProductoDAO();
+                                        List<Producto> list2 = dao.listar();
+                                        Iterator<Producto> iterador = list2.iterator();
+                                        Producto producto = null;
                                         while (iterador.hasNext()) {
-                                            platillo = iterador.next();
-                                             
+                                            producto = iterador.next();
+
                                     %>
                                     <tr>
-                                       
-                                        <td><%= platillo.getIdPlatillo()%></td>
-                                        <td><%= platillo.getNombrePlatillo()%> <br><small><%= platillo.getDescripcionPlatillo()%></small></td>
-                                        <td>$<%= platillo.getPrecioPlatillo()%></td>
+
+                                        <td>0<%= producto.getIdProducto()%></td>
+                                        <td><%= producto.getNombreProducto()%> <br><small><%= producto.getDescripcionProducto()%></small></td>
+                                        <td><%= producto.getCategoria()%></td>
+                                        <td>$<%= producto.getPrecioProducto()%></td>
                                         <td>                            
-                                            <a href="ControladorPlatillo?accion=editar&idPlatillo=<%= platillo.getIdPlatillo()%>"> <img src="images/modifica.png" alt="x" /> </a>       
-                                            <a href="ControladorPlatillo?accion=eliminar&idPlatillo=<%= platillo.getIdPlatillo()%>"> <img src="images/elimina.png" alt="x" /> </a>       
+                                            <a href="ControladorProducto?accion=editar&idProducto=<%= producto.getIdProducto()%>"> <img src="images/modifica.png" alt="x" /> </a>       
+                                            <a href="ControladorProducto?accion=eliminar&idProducto=<%= producto.getIdProducto()%>"> <img src="images/elimina.png" alt="x" /> </a>       
                                         </td>
                                     </tr>
                                     <%}%>
@@ -126,49 +106,50 @@
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card bg-dark text-white">
-                             
+
                                 <h2>Platillos</h2>
                             </div>   
                             <div class="card-body">     
                                 <div class="container">
                                     <link rel="stylesheet" href="css/main.css">
-                                    <form  accion="ControladorPlatillo">       
+                                    <form  accion="ControladorProducto">       
                                         <div class="form-group">
-                                            <label for="text">Nombre platillo:</label>
-                                            <input type="text" class="form-control form-rounded" name="nombrePlatillo" placeholder="Nombre del platillo" required>
+                                            <label for="text">Nombre producto:</label>
+                                            <input type="text" class="form-control form-rounded" name="nombreProducto" placeholder="Nombre del platillo" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="text">Descripción:</label>
-                                            <input type="text" class="form-control form-rounded" name="descripcion" placeholder="Descripcion" required>
+                                            <input type="text" class="form-control form-rounded" name="descripcion" placeholder="Descripcion" >
                                         </div>
                                         <div class="form-group">  
                                             <label for="text">Precio:</label>
-                                            <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioPlatillo" placeholder="Precio" required>
-                                            </script>
-
+                                            <input min='0' type="number" step="0.50" class="form-control form-rounded" name="precioProducto" placeholder="Precio" required>
+                                        </div>
+                                        <input type="text" class="form-control form-rounded" name="tipo" value="Platillo">
+                                        <div class="form-group">
+                                            <label for="text">Categoria:</label>
+                                            <select name="categoria" placeholder="categoria" required> <option value="Entrada">Entrada</option>  <option value="Empanada">Empanada</option> 
+                                                <option value="Tostada">Tostada</option> <option value="Coctel">Coctel</option>  <option value="Caldo, cazuelas y sopas">Caldo, cazuelas y sopas</option>  
+                                                <option value="Camarones">Camarones</option> <option value="Especialidades">Especialidades</option>  <option value="Mojarra">Mojarra</option>  
+                                                <option value="Ostiones y almejas">Ostiones y almejas</option> <option value="Pulpo">Pulpo</option>  <option value="Filete">Filete</option>  
+                                            </select>
                                         </div>
                                         <div class="form-group form-check">
-                                            <label class="form-check-label">
+                                             <label class="form-check-label">
                                                 <input class="form-check-input" type="checkbox" required> Confirmar informacion </input>
                                             </label>
                                         </div> 
                                         <center>  <button type="submit" name="accion" value="Agregar"><img src="images/agrega.png" alt="x" /> </button> </center>   </form> 
                                     <br>
-
-
-
                                 </div> 
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <br><br>
-            <br>  <br> 
+            <br><br> 
         </div>
-
     </div>
 </body>
 </html> 

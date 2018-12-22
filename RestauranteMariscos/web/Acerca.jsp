@@ -25,22 +25,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Menu.jsp">Home <span class="sr-only">(current)</span></a>
-                    </li>
                      <li class="nav-item "> 
 
-                        <a class="nav-link"  href="ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
+                         <li class="nav-item "> 
+
+                            <a class="nav-link"  href="ControladorProducto?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="ControladorUsuario?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="ControladorBebida?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ControladorProducto?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>
                         </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
-                    </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
+                        </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
