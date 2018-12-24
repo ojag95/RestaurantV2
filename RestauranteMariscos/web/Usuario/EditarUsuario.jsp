@@ -29,8 +29,8 @@
     
         <%
             UsuarioDAO dao = new UsuarioDAO();
-            int idUsuario = Integer.parseInt((String) request.getAttribute("idUsuario"));
-            Usuario usuario = (Usuario) dao.listar(idUsuario);
+            String usuario = request.getParameter("usuario");
+            Usuario u = (Usuario) dao.listar(usuario);
         %>
 
     <div style="background-image:url(images/fondo.jpg)">
@@ -54,35 +54,32 @@
                                 <link rel="stylesheet" href="css/style.css">
                                 <link rel="stylesheet" href="css/main.css">
                                 <form  accion="ControladorUsuario">
-                                    <div class="form-group">  
-                                        <input min='0' type="hidden" class="form-control form-rounded" name="idUsuario" placeholder="idUsuario" value="<%= usuario.getidUsuario()%>" required>
+                                      <div class="form-group">
+                                            <label for="text">Nombre del usuario:</label>
+                                            <input type="text" class="form-control form-rounded" name="usuario" value="<%= u.getUsuario()%>" placeholder="Nuevo nombre" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text">Apellido:</label>
+                                            <input type="text" class="form-control form-rounded" name="apellido" value="<%= u.getApellido()%>" placeholder="Apellidos" >
+                                        </div>
+                                     <div class="form-group">
+                                     <label for="text">Puesto:</label>
+                                            <select name="puesto" placeholder="puesto" required> <option ><%= u.getPuesto()%> </option> <option value="Mesero">Mesero</option>  <option value="Admin">Admin</option> 
+                                                <option value="Contador">Contador</option>
+                                            </select></div>
+                                        <div class="form-group">  
+                                            <label for="text">Edad:</label>
+                                            <input min='1' type="number" step="1" class="form-control form-rounded" name="edad" value="<%= u.getEdad()%>" placeholder="edad" required>
 
-                                    </div>  
-                                    <div class="form-group">
-                                        <label for="text">Nombre Usuario:</label>
-                                        <input type="text" class="form-control form-rounded" name="nombre" placeholder="Nombre del Usuario" value="<%= usuario.getnombre()%>" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="text">Puesto:</label>
-                                        <input type="text" class="form-control form-rounded" name="puesto" placeholder="puesto" value="<%= usuario.getpuesto()%>" required>
-                                    </div>
-                                    <div class="form-group">  
-                                        <label for="text">Edad:</label>
-                                        <input min='1' type="number" step="1" class="form-control form-rounded" name="edad" placeholder="edad" value="<%= usuario.getedad()%>" required>
-
-                                    </div>  
-                                    <div class="form-group">
-                                        <label for="text">Domicilio:</label>
-                                        <input type="text" class="form-control form-rounded" name="domicilio" placeholder="domicilio" value="<%= usuario.getdomicilio()%>" required>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label for="text">Usuario:</label>
-                                        <input type="text" class="form-control form-rounded" name="usr" placeholder="usr" value="<%= usuario.getusr()%>" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="text">Contraseña:</label>
-                                        <input type="text" class="form-control form-rounded" name="contrasenia" placeholder="contrasenia" value="<%= usuario.getcontrasenia()%>" required>
-                                    </div>
+                                        </div>  
+                                        <div class="form-group">
+                                            <label for="text">Domicilio:</label>
+                                            <input type="text" class="form-control form-rounded" name="domicilio" value="<%= u.getDomicilio()%>" placeholder="domicilio" >
+                                        </div> 
+                                        <div class="form-group">
+                                            <label for="text">Contraseña:</label>
+                                            <input type="password" class="form-control form-rounded" name="contrasenia" value="<%= u.getContrasenia()%>" placeholder="Contraseña"  required>
+                                        </div>
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" required> Confirmar datos </input>

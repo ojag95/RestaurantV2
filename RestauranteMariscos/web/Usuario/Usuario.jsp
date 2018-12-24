@@ -90,10 +90,9 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th> ID </th>
-                                        <th>Nombre</th>
                                         <th>Usuario</th>
                                         <th>Puesto</th>
+                                        <th>Domicilio</th>
                                         <th>Operaciones</th>
                                     </tr>
                                 </thead>
@@ -106,13 +105,12 @@
                                             usuario = iterador.next();
                                     %>
                                     <tr>
-                                        <td><%= usuario.getidUsuario()%></td>
-                                        <td><%= usuario.getnombre()%> </td>
-                                        <td><%= usuario.getusr()%></td>
-                                        <td><%= usuario.getpuesto()%></td>
+                                        <td><%= usuario.getUsuario()%><br><small><%= usuario.getApellido()%></small> </td>
+                                        <td><%= usuario.getPuesto()%></td>
+                                        <td><%= usuario.getDomicilio()%></td>
                                         <td>                            
-                                            <a href="ControladorUsuario?accion=editar&idUsuario=<%= usuario.getidUsuario()%>"> <img src="images/modifica.png" alt="x" /> </a>       
-                                            <a href="ControladorUsuario?accion=eliminar&idUsuario=<%= usuario.getidUsuario()%>"> <img src="images/elimina.png" alt="x" /> </a>       
+                                            <a href="ControladorUsuario?accion=editar&usuario=<%= usuario.getUsuario()%>"> <img src="images/modifica.png" alt="x" /> </a>       
+                                            <a href="ControladorUsuario?accion=eliminar&usuario=<%= usuario.getUsuario()%>"> <img src="images/elimina.png" alt="x" /> </a>       
                                         </td>
                                     </tr>
                                     <%}%>
@@ -128,59 +126,50 @@
                             <div class="card-body">     
                                 <div class="container">
                                     <link rel="stylesheet" href="css/main.css">
-                                    <form  accion="ControladorUsuario">       
+                                    <form  action="ControladorUsuario?accion=Agregar" method="post">        
+                                        <div class="form-group">
+                                            <label for="text">Nombre Usuario:</label>
+                                            <input type="text" class="form-control form-rounded" name="usuario" placeholder="Nombre del Usuario" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="text">Apellido:</label>
+                                            <input type="text" class="form-control form-rounded" name="apellido" placeholder="Apellidos" >
+                                        </div>
+                                         <div class="form-group">
+                                     <label for="text">Puesto:</label>
+                                            <select name="puesto" placeholder="puesto" required> <option value="Mesero">Mesero</option>  <option value="Admin">Admin</option> 
+                                                <option value="Contador">Contador</option>
+                                            </select></div>
                                         <div class="form-group">  
-                                        <input min='0' type="hidden" class="form-control form-rounded" name="idUsuario" placeholder="idUsuario" required>
+                                            <label for="text">Edad:</label>
+                                            <input min='1' type="number" step="1" class="form-control form-rounded" name="edad" placeholder="edad" required>
 
-                                    </div>  
-                                    <div class="form-group">
-                                        <label for="text">Nombre Usuario:</label>
-                                        <input type="text" class="form-control form-rounded" name="nombre" placeholder="Nombre del Usuario" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="text">Puesto:</label>
-                                        <input type="text" class="form-control form-rounded" name="puesto" placeholder="puesto"  required>
-                                    </div>
-                                    <div class="form-group">  
-                                        <label for="text">Edad:</label>
-                                        <input min='1' type="number" step="1" class="form-control form-rounded" name="edad" placeholder="edad"  required>
+                                        </div>  
+                                        <div class="form-group">
+                                            <label for="text">Domicilio:</label>
+                                            <input type="text" class="form-control form-rounded" name="domicilio" placeholder="domicilio" >
+                                        </div> 
+                                        <div class="form-group">
+                                            <label for="text">Contraseña:</label>
+                                            <input type="password" class="form-control form-rounded" name="contrasenia" placeholder="Contraseña"  required>
+                                        </div>
 
-                                    </div>  
-                                    <div class="form-group">
-                                        <label for="text">Domicilio:</label>
-                                        <input type="text" class="form-control form-rounded" name="domicilio" placeholder="domicilio" required>
-                                    </div> 
-                                    <div class="form-group">
-                                        <label for="text">Usuario:</label>
-                                        <input type="text" class="form-control form-rounded" name="usr" placeholder="usr" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="text">Contraseña:</label>
-                                        <input type="text" class="form-control form-rounded" name="contrasenia" placeholder="contrasenia"  required>
-                                    </div>
-         
                                         <div class="form-group form-check">
                                             <label class="form-check-label">
                                                 <input class="form-check-input" type="checkbox" required> Confirmar informacion </input>
                                             </label>
                                         </div> 
-                                        <center>  <button type="submit" name="accion" value="Agregar"><img src="images/agrega.png" alt="x" /> </button> </center>   </form> 
+                                        <center>  <button type="submit" ><img src="images/agrega.png" alt="x" /> </button> </center>   </form> 
                                     <br>
-
-
-
                                 </div> 
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <br><br>
-            <br>  <br> 
+            <br><br> 
         </div>
-
     </div>
 </body>
 </html> 

@@ -11,82 +11,72 @@ package Modelo;
  */
 public class Usuario {
 
-    int idUsuario;
-    String nombre;
+    String usuario;
+    String apellido;
     String puesto;
     int edad;
     String domicilio;
-    String usr;
     String contrasenia;
 
     public Usuario() {
 
     }
 
-    public Usuario(int idUsuario, String nombre, String puesto, int edad, String domicilio, String usr, String contrasenia) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
+    public Usuario(String usuario, String apellido, String puesto, int edad, String domicilio, String contrasenia) {
+        this.usuario = usuario;
+        this.apellido = apellido;
         this.puesto = puesto;
         this.edad = edad;
         this.domicilio = domicilio;
-        this.usr = usr;
         this.contrasenia = contrasenia;
     }
 
-    public void setidUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setnombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public void setpuesto(String puesto) {
-        this.puesto = puesto;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setedad(int edad) {
-        this.edad = edad;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public void setcontrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
-    public void setdomicilio(String domicilio) {
-        this.domicilio = domicilio;
-    }
-
-    public void setusr(String usr) {
-        this.usr = usr;
-    }
-
-    public String getnombre() {
-        return nombre;
-    }
-
-    public String getpuesto() {
+    public String getPuesto() {
         return puesto;
     }
 
-    public int getedad() {
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+
+    public int getEdad() {
         return edad;
     }
 
-    public String getdomicilio() {
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public String getDomicilio() {
         return domicilio;
     }
 
-    public String getusr() {
-        return usr;
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
 
-    public String getcontrasenia() {
+    public String getContrasenia() {
         return contrasenia;
     }
 
-    public int getidUsuario() {
-        return idUsuario;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
 }

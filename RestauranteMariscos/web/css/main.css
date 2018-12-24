@@ -53,8 +53,13 @@ button {
     min-width: 60px;
     font-weight: bold;
     background-color: transparent;
-    border: none;		
+    border: none;
+    
 }
 button:hover{
     background: #dadada;
     outline: none !important;
+}
+
+
+ 

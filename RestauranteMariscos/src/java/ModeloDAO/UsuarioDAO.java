@@ -22,17 +22,16 @@ public class UsuarioDAO implements CRUDUsuarios {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         ResultSet resultadoConsulta = null;
         try {
-            resultadoConsulta = conector.consulta("select * from Usuario order by idUsuario");
+            resultadoConsulta = conector.consulta("select * from Usuario order by puesto");
             while (resultadoConsulta.next()) {
                 System.out.println("imprime");
                 Usuario objetoUsuario = new Usuario();
-                objetoUsuario.setidUsuario(resultadoConsulta.getInt("idUsuario"));
-                objetoUsuario.setnombre(resultadoConsulta.getString("nombre"));
-                objetoUsuario.setpuesto(resultadoConsulta.getString("puesto"));
-                objetoUsuario.setedad(resultadoConsulta.getInt("edad"));
-                objetoUsuario.setdomicilio(resultadoConsulta.getString("domicilio"));
-                objetoUsuario.setusr(resultadoConsulta.getString("usr"));
-                objetoUsuario.setcontrasenia(resultadoConsulta.getString("contrasenia"));
+                objetoUsuario.setUsuario(resultadoConsulta.getString("usuario"));
+                objetoUsuario.setApellido(resultadoConsulta.getString("apellido"));
+                objetoUsuario.setPuesto(resultadoConsulta.getString("puesto"));
+                objetoUsuario.setEdad(resultadoConsulta.getInt("edad"));
+                objetoUsuario.setDomicilio(resultadoConsulta.getString("domicilio"));
+                objetoUsuario.setContrasenia(resultadoConsulta.getString("contrasenia"));
                 listaUsuarios.add(objetoUsuario);
 
             }
@@ -44,19 +43,18 @@ public class UsuarioDAO implements CRUDUsuarios {
     }
 
     @Override
-    public Usuario listar(int idUsuario) {
+    public Usuario listar(String usuario) {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         ResultSet resultadoConsulta = null;
         try {
-            resultadoConsulta = conector.consulta("select * from Usuario where idUsuario=" + idUsuario);
+            resultadoConsulta = conector.consulta("select * from Usuario where usuario='" + usuario+"'");
             while (resultadoConsulta.next()) {
-                p.setidUsuario(resultadoConsulta.getInt("idUsuario"));
-                p.setnombre(resultadoConsulta.getString("nombre"));
-                p.setpuesto(resultadoConsulta.getString("puesto"));
-                p.setedad(resultadoConsulta.getInt("edad"));
-                p.setdomicilio(resultadoConsulta.getString("domicilio"));
-                p.setusr(resultadoConsulta.getString("usr"));
-                p.setcontrasenia(resultadoConsulta.getString("contrasenia"));
+                p.setUsuario(resultadoConsulta.getString("usuario"));
+                p.setApellido(resultadoConsulta.getString("apellido"));
+                p.setPuesto(resultadoConsulta.getString("puesto"));
+                p.setEdad(resultadoConsulta.getInt("edad"));
+                p.setDomicilio(resultadoConsulta.getString("domicilio"));
+                p.setContrasenia(resultadoConsulta.getString("contrasenia"));
             }
 
         } catch (Exception e) {
@@ -68,7 +66,7 @@ public class UsuarioDAO implements CRUDUsuarios {
 
         try {
             System.out.println("agregar");
-            conector.registrar("insert into Usuario (nombre, puesto, edad, domicilio, usr, contrasenia)values('" + usuario.getnombre() + "','" + usuario.getpuesto() + "'," + usuario.getedad() + ",'" + usuario.getdomicilio() + "','" + usuario.getusr() + "','" + usuario.getcontrasenia() + "')");
+            conector.registrar("insert into Usuario (usuario, apellido, puesto, edad, domicilio, contrasenia)values('" + usuario.getUsuario() + "','" + usuario.getApellido() + "','" + usuario.getPuesto() + "'," + usuario.getEdad() + ",'" + usuario.getDomicilio() + "','" + usuario.getContrasenia() + "')");
         } catch (Exception e) {
 
         }
@@ -79,7 +77,7 @@ public class UsuarioDAO implements CRUDUsuarios {
     public boolean editar(Usuario usuario) {
         try {
             System.out.println("actualizar");
-            String sql = "update Usuario set nombre='" + usuario.getnombre() + "',puesto='" + usuario.getpuesto() + "',edad='" + usuario.getedad() +"',domicilio='" + usuario.getdomicilio() +"',usr='" + usuario.getusr() +"',contrasenia='" + usuario.getcontrasenia() + "'where idUsuario=" + usuario.getidUsuario();
+            String sql = "update Usuario set apellido='" + usuario.getApellido() + "',puesto='" + usuario.getPuesto() + "',edad=" + usuario.getEdad() +",domicilio='" + usuario.getDomicilio() +"',contrasenia='" + usuario.getContrasenia() + "'where usuario='" + usuario.getUsuario()+"'";
             conector.registrar(sql);
         } catch (Exception e) {
 
@@ -88,10 +86,10 @@ public class UsuarioDAO implements CRUDUsuarios {
     }
 
     @Override
-    public boolean eliminar(int idUsuario) {
+    public boolean eliminar(String usuario) {
         try {
             System.out.println("eliminar");
-            conector.eliminar("delete from Usuario where idUsuario=" + idUsuario);
+            conector.eliminar("delete from Usuario where usuario='"+usuario+"'");
         } catch (Exception e) {
 
         }
