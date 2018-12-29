@@ -44,7 +44,8 @@ public class ControladorUsuario extends HttpServlet {
     String urlUsuarios = "Usuario/Usuario.jsp";
     String urlEditU = "Usuario/EditarUsuario.jsp";
     String urlBebidas = "Bebida/Bebida.jsp";
-
+    String urlAcerca="Orden/Acerca.jsp";
+    String urlOrden="Orden/Orden.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -84,6 +85,10 @@ public class ControladorUsuario extends HttpServlet {
         } else if (action.equalsIgnoreCase("editar")) {
             request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
             acceso = urlEditU;
+        } else if (action.equalsIgnoreCase("Acerca")) {
+            acceso = urlAcerca;
+        } else if (action.equalsIgnoreCase("Orden")) {
+            acceso = urlOrden;
         } else if (action.equalsIgnoreCase("Actualizar")) {
             int noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
             String usuario = request.getParameter("usuario");
@@ -158,7 +163,7 @@ public class ControladorUsuario extends HttpServlet {
                         vista.forward(request, response);
                     } else if (nivel == 3) {
                         System.out.println("Dentro 3");
-                        acceso = urlUsuarios;
+                        acceso = urlAcerca;
                         RequestDispatcher vista = request.getRequestDispatcher(acceso);
                         vista.forward(request, response);
                     } else {

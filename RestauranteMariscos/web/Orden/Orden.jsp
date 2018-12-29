@@ -15,17 +15,17 @@
 
 <!doctype html>
 <html lang="en">
-      <head>
+    <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/main.css">
-        <title>Usuarios</title>
+        <script src="js/bootstrap.min.js"></script>
+        <title>Pedidos</title>
     </head>
-    <script type="text/javascript">
+     <script type="text/javascript">
         var areYouReallySure = false;
         function areYouSure() {
             if (salir) {
@@ -42,6 +42,14 @@
         var salir = true;
         window.onbeforeunload = areYouSure;
     </script>
+    <div style="background-image:url(images/fondo.jpg)">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+
+        
        <div style="background-image:url(images/fondo.jpg)">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -55,13 +63,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item "> 
-
-                            <a class="nav-link"  href="Orden.jsp" onclick="areYouSure()">Carta <span class="sr-only">(current)</span></a>
-                        </li>     
-                        <li class="nav-item ">
-                            <a class="nav-link" href="Acerca.jsp" onclick="areYouSure()">Acerca de<span class="sr-only">(current)</span></a>
-                        </li>
+                         <li class="nav-item "> 
+                    <li class="nav-item ">
+                        <a class="nav-link" href="ControladorUsuario?accion=Orden" onclick="areYouSure()" > Pedido <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="ControladorUsuario?accion=Acerca" onclick="areYouSure()" >Acerca de <span class="sr-only">(current)</span></a>
+                    </li>
                         &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp;
                         &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;
                         &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;
@@ -149,7 +157,7 @@
                                         
 
                                     </form> 
-                                        <center>  <button id="btn_agregar" onclick="addProducto()" ><img src="../images/agrega.png" alt="x" /> </button> </center>   
+                                        <center>  <button id="btn_agregar" onclick="addProducto()" onclick="areYouSure()"><img src="images/agrega.png" alt="x" /> </button> </center>   
 
                                     <br>
 
