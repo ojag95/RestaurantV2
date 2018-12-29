@@ -6,7 +6,6 @@
 
 <%@page import="Modelo.Producto"%>
 <%@page import="ModeloDAO.ProductoDAO"%>
-<%@page import="Modelo.Bebida"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
@@ -16,28 +15,39 @@
 
 <!doctype html>
 <html lang="en">
-    <head>
+      <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/main.css">
-        <script src="../js/bootstrap.min.js"></script>
-        <title>Registrar Orden</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/main.css">
+        <title>Usuarios</title>
     </head>
-    <style>
+    <script type="text/javascript">
+        var areYouReallySure = false;
+        function areYouSure() {
+            if (salir) {
+                if (!areYouReallySure && true) {
+                    areYouReallySure = true;
+                    var confMessage = "***************************************nn E S P E R A !!! nnAntes de abandonar nuestra web, síguenos en nuestras redes sociales como Facebook, Twitter o Instagram.nnnYA PUEDES HACER CLIC EN EL BOTÓN CANCELAR SI QUIERES...nn***************************************";
+                    return confMessage;
+                }
+            } else {
+                salir = true;
+            }
+        }
 
-    </style>
-    <div style="background-image:url(../images/fondo.jpg)">
+        var salir = true;
+        window.onbeforeunload = areYouSure;
+    </script>
+       <div style="background-image:url(images/fondo.jpg)">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!------ Include the above in your HEAD tag ---------->
         <div style="background-image:url(images/fondo.jpg)">
-
-            </style>
             <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
                 <a class="navbar-brand" href="#">Mariscos Don Roque</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,35 +55,31 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Menu.jsp">Home <span class="sr-only">(current)</span></a>
-                        </li>
+                        <li class="nav-item "> 
+
+                            <a class="nav-link"  href="Orden.jsp" onclick="areYouSure()">Carta <span class="sr-only">(current)</span></a>
+                        </li>     
                         <li class="nav-item ">
-                            <a class="nav-link" href="ControladorPlatillo?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="Acerca.jsp" onclick="areYouSure()">Acerca de<span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="Usuarios.jsp" >Usuarios <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="Cuentas.jsp" >Cuentas<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
-                        </li>
+                        &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp;
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;
+                        &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+                        <form class="form-inline mt-2 mt-md-0" action ="index.jsp">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Cerrar Sesion</button>
+
+                        </form>
                     </ul>
-                    <form class="form-inline mt-2 mt-md-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
                 </div>
             </div>
 
 
 
 
-            <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(../images/fondo.jpg) no-repeat left center; background-size: cover;">
+           <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(images/fondo.jpg) no-repeat left center; background-size: cover;">
 
-     
+                <!-- Crea un componente que permite resaltar un texto  -->     
                 <div class="row"  >
                     <link rel="stylesheet" href="css/main.css">
                     <div class="col-sm-8" >
@@ -267,7 +273,7 @@ function sumarCantidad()
 function  obtenerTipos(){
     $.ajax({
       type: "POST",
-      url: '/CodeHelpers/Orden/ObtenerTipos.jsp',
+      url: 'Orden/ObtenerTipos.jsp',
       success: function(data) {
         if(data!=null){
         console.log("tipos");
@@ -299,7 +305,7 @@ function  obtenerCategorias(){
 
     $.ajax({
       type: "POST",
-      url: '/CodeHelpers/Orden/ObtenerCategorias.jsp',
+      url: 'Orden/ObtenerCategorias.jsp',
       data: {
           tipo: thisTipo,
       },
@@ -339,7 +345,7 @@ function  obtenerProductoXCategorias(){
 
     $.ajax({
       type: "POST",
-      url: '/CodeHelpers/Orden/ObtenerProductoXCategorias.jsp',
+      url: 'Orden/ObtenerProductoXCategorias.jsp',
       data: {
           categoria: thiscategoria,
       },
@@ -418,7 +424,7 @@ function  enviarOrden(data){
 
     $.ajax({
       type: "POST",
-      url: '/CodeHelpers/Orden/ObtenerOrden.jsp',
+      url: 'Orden/ObtenerOrden.jsp',
       data: {
           orden: thisorden,
           empleado: thisempleado,

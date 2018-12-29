@@ -22,16 +22,15 @@ public class UsuarioDAO implements CRUDUsuarios {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         ResultSet resultadoConsulta = null;
         try {
-            resultadoConsulta = conector.consulta("select * from Usuario order by puesto");
+            resultadoConsulta = conector.consulta("select * from Usuario where nivel=3 order by noEmpleado");
             while (resultadoConsulta.next()) {
                 System.out.println("imprime");
                 Usuario objetoUsuario = new Usuario();
+                objetoUsuario.setnoEmpleado(resultadoConsulta.getInt("noEmpleado"));
                 objetoUsuario.setUsuario(resultadoConsulta.getString("usuario"));
-                objetoUsuario.setApellido(resultadoConsulta.getString("apellido"));
-                objetoUsuario.setPuesto(resultadoConsulta.getString("puesto"));
                 objetoUsuario.setEdad(resultadoConsulta.getInt("edad"));
                 objetoUsuario.setDomicilio(resultadoConsulta.getString("domicilio"));
-                objetoUsuario.setContrasenia(resultadoConsulta.getString("contrasenia"));
+                objetoUsuario.setContra(resultadoConsulta.getString("contra"));
                 listaUsuarios.add(objetoUsuario);
 
             }
@@ -43,18 +42,17 @@ public class UsuarioDAO implements CRUDUsuarios {
     }
 
     @Override
-    public Usuario listar(String usuario) {
+    public Usuario listar(int noEmpleado) {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         ResultSet resultadoConsulta = null;
         try {
-            resultadoConsulta = conector.consulta("select * from Usuario where usuario='" + usuario+"'");
+            resultadoConsulta = conector.consulta("select * from Usuario where noEmpleado='" + noEmpleado + "'");
             while (resultadoConsulta.next()) {
+                p.setnoEmpleado(resultadoConsulta.getInt("noEmpleado"));
                 p.setUsuario(resultadoConsulta.getString("usuario"));
-                p.setApellido(resultadoConsulta.getString("apellido"));
-                p.setPuesto(resultadoConsulta.getString("puesto"));
                 p.setEdad(resultadoConsulta.getInt("edad"));
                 p.setDomicilio(resultadoConsulta.getString("domicilio"));
-                p.setContrasenia(resultadoConsulta.getString("contrasenia"));
+                p.setContra(resultadoConsulta.getString("contra"));
             }
 
         } catch (Exception e) {
@@ -66,39 +64,23 @@ public class UsuarioDAO implements CRUDUsuarios {
 
         try {
             System.out.println("agregar");
-            conector.registrar("insert into Usuario (usuario, apellido, puesto, edad, domicilio, contrasenia)values('" + usuario.getUsuario() + "','" + usuario.getApellido() + "','" + usuario.getPuesto() + "'," + usuario.getEdad() + ",'" + usuario.getDomicilio() + "','" + usuario.getContrasenia() + "')");
+            conector.registrar("insert into Usuario (usuario, edad, domicilio, contrasenia)values('" + usuario.getUsuario() + "'," + usuario.getEdad() + ",'" + usuario.getDomicilio() + "','" + usuario.getContra() + "')");
         } catch (Exception e) {
 
         }
         return false;
     }
 
-@Override
+    @Override
     public boolean editar(Usuario usuario) {
         try {
             System.out.println("actualizar");
-            String sql = "update Usuario set apellido='" + usuario.getApellido() + "',puesto='" + usuario.getPuesto() + "',edad=" + usuario.getEdad() +",domicilio='" + usuario.getDomicilio() +"',contrasenia='" + usuario.getContrasenia() + "'where usuario='" + usuario.getUsuario()+"'";
+            String sql = "update Usuario set usuario='" + usuario.getUsuario() + "',edad=" + usuario.getEdad() + ",domicilio='" + usuario.getDomicilio() + "',contra='" + usuario.getContra() + "' where noEmpleado='" + usuario.getnoEmpleado() + "'";
+            System.out.println(sql);
             conector.registrar(sql);
         } catch (Exception e) {
 
         }
         return false;
     }
-
-    @Override
-    public boolean eliminar(String usuario) {
-        try {
-            System.out.println("eliminar");
-            conector.eliminar("delete from Usuario where usuario='"+usuario+"'");
-        } catch (Exception e) {
-
-        }
-        return false;
-    }
-
-    @Override
-    public boolean agregar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

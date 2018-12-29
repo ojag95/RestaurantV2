@@ -1,7 +1,7 @@
 <%-- 
     Document   : demo
     Created on : 10/12/2018, 08:36:35 PM
-    Author     : oscar
+    Author     : oscar & Genaro
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,6 +12,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import =" java.net.*" %>
 <%@page import="CodeHelpers.ConexionesDB"%>
+<%@page session="true"%>
 
 
 <!DOCTYPE html>
@@ -156,20 +157,22 @@
         </style>
     </head>
     <body>
+
         <!--	<center><titul>Marisqueria "El puerto de Don Roque"</titul></center>  -->
         <div class="login-form">
             <form action ="ControladorUsuario?accion=Login" method="post">    
                 <div class="avatar"> <img src="images/avatar.png" alt="Avatar"> </div>   
                 <h2 class="text-center"><strong>Inicio de sesión</strong></h2>    
                 <div class="form-group">
-                    <input type="text" class="form-control input-lg" name="user" placeholder="Usuario" required="required">	
+                    <input type="number" min='1' step="1" class="form-control input-lg" name="user" placeholder="Usuario" required="required">	
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control input-lg" name="password" placeholder="Contraseña" required="required">
                 </div> 
-                 <div class="form-group clearfix">
-                       <button  type="submit"class="btn btn-primary btn-lg pull-right">Acceder</button>
-                 </div>		</form>
+                <div class="form-group clearfix">
+                    <button  type="submit" name="btnIngresar" class="btn btn-primary btn-lg pull-right">Acceder</button>
+                </div>		
+            </form>
         </div>
     </body>
 </html>                                                 

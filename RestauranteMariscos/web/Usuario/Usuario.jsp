@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 10/12/2018, 06:02:50 PM
-    Author     : oscar
+    Author     : oscar y genaro
 --%>
 
 <%@page import="java.util.Iterator"%>
@@ -23,10 +23,26 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/bootstrap.min.js"></script>
         <title>Usuarios</title>
     </head>
+    <script type="text/javascript">
+        var areYouReallySure = false;
+        function areYouSure() {
+            if (salir) {
+                if (!areYouReallySure && true) {
+                    areYouReallySure = true;
+                    var confMessage = "***************************************nn E S P E R A !!! nnAntes de abandonar nuestra web, síguenos en nuestras redes sociales como Facebook, Twitter o Instagram.nnnYA PUEDES HACER CLIC EN EL BOTÓN CANCELAR SI QUIERES...nn***************************************";
+                    return confMessage;
+                }
+            } else {
+                salir = true;
+            }
+        }
 
+        var salir = true;
+        window.onbeforeunload = areYouSure;
+    </script>
+    <body>
     <div style="background-image:url(images/fondo.jpg)">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -42,22 +58,23 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item "> 
 
-                            <a class="nav-link"  href="ControladorProducto?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
+                            <a class="nav-link"  href="ControladorProducto?accion=Platillo" onclick="areYouSure()">Platillos <span class="sr-only">(current)</span></a>
+                        </li>     
+                        <li class="nav-item ">
+                            <a class="nav-link" href="ControladorProducto?accion=Bebida" onclick="areYouSure()">Bebidas<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="ControladorUsuario?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ControladorUsuario?accion=Usuario" onclick="areYouSure()">Usuarios <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="ControladorProducto?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
-                        </li>
+                        &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp;
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;
+                        &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+                        <form class="form-inline mt-2 mt-md-0" action ="index.jsp">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Cerrar Sesion</button>
+
+                        </form>
                     </ul>
-                    <form class="form-inline mt-2 mt-md-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
                 </div>
             </div>
 
@@ -66,23 +83,10 @@
 
             <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(images/fondo.jpg) no-repeat left center; background-size: cover;">
 
-                <!-- Crea un componente que permite resaltar un texto  -->
-                <%
-
-                    //ConexionesDB conector;
-                    //conector=new ConexionesDB();
-                    //ResultSet resultado=null;
-                    //try{
-                    //System.out.println(conector.probarConexion());
-                    //resultado=conector.consulta("select * from Platillos;");
-                    //}catch(Exception e)
-                    //{
-                    //    System.out.println(e);
-                    //}
-                %>        
+                <!-- Crea un componente que permite resaltar un texto  -->     
                 <div class="row"  >
                     <link rel="stylesheet" href="css/main.css">
-                    <div class="col-sm-8" >
+                    <div class="col-sm-12" >
                         <div class="card">
                             <div class="card bg-dark text-white">
                                 <h2>Usuarios</h2>
@@ -91,7 +95,7 @@
                                 <thead>
                                     <tr>
                                         <th>Usuario</th>
-                                        <th>Puesto</th>
+                                        <th>Edad</th>
                                         <th>Domicilio</th>
                                         <th>Operaciones</th>
                                     </tr>
@@ -103,72 +107,25 @@
                                         Usuario usuario = null;
                                         while (iterador.hasNext()) {
                                             usuario = iterador.next();
+                                            System.out.println(usuario.getnoEmpleado());
                                     %>
                                     <tr>
-                                        <td><%= usuario.getUsuario()%><br><small><%= usuario.getApellido()%></small> </td>
-                                        <td><%= usuario.getPuesto()%></td>
+                                        <td><%= usuario.getUsuario()%></td>
+                                        <td> &emsp;  <%= usuario.getEdad()%></td>
                                         <td><%= usuario.getDomicilio()%></td>
                                         <td>                            
-                                            <a href="ControladorUsuario?accion=editar&usuario=<%= usuario.getUsuario()%>"> <img src="images/modifica.png" alt="x" /> </a>       
-                                            <a href="ControladorUsuario?accion=eliminar&usuario=<%= usuario.getUsuario()%>"> <img src="images/elimina.png" alt="x" /> </a>       
+                                            &emsp; <a href="ControladorUsuario?accion=editar&noEmpleado=<%= usuario.getnoEmpleado()%>" onclick="areYouSure()"> <img src="images/modifica.png" alt="x" /> </a>       
                                         </td>
                                     </tr>
                                     <%}%>
 
                                 </tbody>
                             </table>
-                        </div></div>
-                    <div class="col-sm-4">
-                        <div class="card">
-                            <div class="card bg-dark text-white">
-                                <h2>Registro Usuario</h2>
-                            </div>   
-                            <div class="card-body">     
-                                <div class="container">
-                                    <link rel="stylesheet" href="css/main.css">
-                                    <form  action="ControladorUsuario?accion=Agregar" method="post">        
-                                        <div class="form-group">
-                                            <label for="text">Nombre Usuario:</label>
-                                            <input type="text" class="form-control form-rounded" name="usuario" placeholder="Nombre del Usuario" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="text">Apellido:</label>
-                                            <input type="text" class="form-control form-rounded" name="apellido" placeholder="Apellidos" >
-                                        </div>
-                                         <div class="form-group">
-                                     <label for="text">Puesto:</label>
-                                            <select name="puesto" placeholder="puesto" required> <option value="Mesero">Mesero</option>  <option value="Admin">Admin</option> 
-                                                <option value="Contador">Contador</option>
-                                            </select></div>
-                                        <div class="form-group">  
-                                            <label for="text">Edad:</label>
-                                            <input min='1' type="number" step="1" class="form-control form-rounded" name="edad" placeholder="edad" required>
-
-                                        </div>  
-                                        <div class="form-group">
-                                            <label for="text">Domicilio:</label>
-                                            <input type="text" class="form-control form-rounded" name="domicilio" placeholder="domicilio" >
-                                        </div> 
-                                        <div class="form-group">
-                                            <label for="text">Contraseña:</label>
-                                            <input type="password" class="form-control form-rounded" name="contrasenia" placeholder="Contraseña"  required>
-                                        </div>
-
-                                        <div class="form-group form-check">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" required> Confirmar informacion </input>
-                                            </label>
-                                        </div> 
-                                        <center>  <button type="submit" ><img src="images/agrega.png" alt="x" /> </button> </center>   </form> 
-                                    <br>
-                                </div> 
-                            </div>
                         </div>
                     </div>
-                </div>
+                </div> 
+                <br><br><br><br><br><br>
             </div>
-            <br><br>
-            <br><br> 
         </div>
     </div>
 </body>

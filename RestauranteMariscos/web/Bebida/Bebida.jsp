@@ -26,7 +26,23 @@
         <script src="js/bootstrap.min.js"></script>
         <title>Bebidas</title>
     </head>
+    <script type="text/javascript">
+        var areYouReallySure = false;
+        function areYouSure() {
+            if (salir) {
+                if (!areYouReallySure && true) {
+                    areYouReallySure = true;
+                    var confMessage = "***************************************nn E S P E R A !!! nnAntes de abandonar nuestra web, síguenos en nuestras redes sociales como Facebook, Twitter o Instagram.nnnYA PUEDES HACER CLIC EN EL BOTÓN CANCELAR SI QUIERES...nn***************************************";
+                    return confMessage;
+                }
+            } else {
+                salir = true;
+            }
+        }
 
+        var salir = true;
+        window.onbeforeunload = areYouSure;
+    </script>
     <div style="background-image:url(images/fondo.jpg)">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -40,28 +56,27 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-                       <li class="nav-item "> 
+                        <li class="nav-item "> 
 
-                            <a class="nav-link"  href="ControladorProducto?accion=Platillo" >Platillos <span class="sr-only">(current)</span></a>
+                            <a class="nav-link"  href="ControladorProducto?accion=Platillo" onclick="areYouSure()">Platillos <span class="sr-only">(current)</span></a>
+                        </li>     
+                        <li class="nav-item ">
+                            <a class="nav-link" href="ControladorProducto?accion=Bebida" onclick="areYouSure()">Bebidas<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="ControladorUsuario?accion=Usuario" >Usuarios <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="ControladorUsuario?accion=Usuario" onclick="areYouSure()">Usuarios <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="ControladorProducto?accion=Bebida" >Bebidas<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="Acerca.jsp" >Acerca de <span class="sr-only">(current)</span></a>
-                        </li>
+                        &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp;
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;&emsp; &emsp;&emsp; &emsp;
+                        &emsp; &emsp; &emsp; &emsp;&emsp; &emsp;
+                        <form class="form-inline mt-2 mt-md-0" action ="index.jsp">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Cerrar Sesion</button>
+
+                        </form>
                     </ul>
-                    <form class="form-inline mt-2 mt-md-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
                 </div>
             </div>
-
-
 
 
             <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(images/fondo.jpg) no-repeat left center; background-size: cover;">
@@ -98,8 +113,8 @@
                                         <td><%= producto.getCategoria()%></td>
                                         <td>$<%= producto.getPrecioProducto()%></td>
                                         <td>                              
-                                               <a href="ControladorProducto?accion=editar2&idProducto=<%= producto.getIdProducto()%>"> <img src="images/modifica.png" alt="x" /> </a>       
-                                            <a href="ControladorProducto?accion=eliminar2&idProducto=<%= producto.getIdProducto()%>"> <img src="images/elimina.png" alt="x" /> </a>       
+                                               <a href="ControladorProducto?accion=editar2&idProducto=<%= producto.getIdProducto()%>" onclick="areYouSure()"> <img src="images/modifica.png" alt="x" /> </a>       
+                                            <a href="ControladorProducto?accion=eliminar2&idProducto=<%= producto.getIdProducto()%>" onclick="areYouSure()"> <img src="images/elimina.png" alt="x" /> </a>       
                                       </td>
                                     </tr>
                                     <%}%>
@@ -140,7 +155,7 @@
                                                 <input class="form-check-input" type="checkbox" required> Confirmar informacion </input>
                                             </label>
                                         </div> 
-                                        <center>  <button type="submit" name="accion" value="Agregar2"><img src="images/agrega.png" alt="x" /> </button> </center>   </form> 
+                                        <center>  <button type="submit" name="accion" value="Agregar2" onclick="areYouSure()"><img src="images/agrega.png" alt="x" /> </button> </center>   </form> 
                                     <br>
                                 </div> 
                             </div>

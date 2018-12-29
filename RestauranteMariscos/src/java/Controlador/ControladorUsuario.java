@@ -11,12 +11,16 @@ import ModeloDAO.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
+import javax.websocket.Session;
 
 /**
  *
@@ -77,31 +81,24 @@ public class ControladorUsuario extends HttpServlet {
         System.out.println(action);
         if (action.equalsIgnoreCase("Usuario")) {
             acceso = urlUsuarios;
-        } else if (action.equalsIgnoreCase("eliminar")) {
-            String usuario = request.getParameter("usuario");
-            u.setUsuario(usuario);
-            usuarioDao.eliminar(usuario);
-            acceso = urlUsuarios;
         } else if (action.equalsIgnoreCase("editar")) {
-            request.setAttribute("usuario", request.getParameter("usuario"));
+            request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
             acceso = urlEditU;
         } else if (action.equalsIgnoreCase("Actualizar")) {
+            int noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
             String usuario = request.getParameter("usuario");
-            String apellido = request.getParameter("apellido");
-            String puesto = request.getParameter("puesto");
             int edad = Integer.parseInt(request.getParameter("edad"));
             String domicilio = request.getParameter("domicilio");
-            String contrasenia = request.getParameter("contrasenia");
+            String contra = request.getParameter("contra");
+            u.setnoEmpleado(noEmpleado);
             u.setUsuario(usuario);
-            u.setApellido(apellido);
-            u.setPuesto(puesto);
             u.setEdad(edad);
             u.setDomicilio(domicilio);
-            u.setContrasenia(contrasenia);
+            u.setContra(contra);
             usuarioDao.editar(u);
             acceso = urlUsuarios;
         }
-      
+
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }
@@ -125,51 +122,59 @@ public class ControladorUsuario extends HttpServlet {
             acceso = urlUsuarios;
         } else if (action.equalsIgnoreCase("Agregar")) {
             String usuario = request.getParameter("usuario");
-            String apellido = request.getParameter("apellido");
-            String puesto = request.getParameter("puesto");
             int edad = Integer.parseInt(request.getParameter("edad"));
             String domicilio = request.getParameter("domicilio");
-            String contrasenia = request.getParameter("contrasenia");
-            
+            String contra = request.getParameter("contra");
+
             u.setUsuario(usuario);
-            u.setApellido(apellido);
-            u.setPuesto(puesto);
             u.setEdad(edad);
             u.setDomicilio(domicilio);
-            u.setContrasenia(contrasenia);
+            u.setContra(contra);
             usuarioDao.Usuario(u);
             acceso = urlUsuarios;
-        }else if (action.equalsIgnoreCase("Login")) {
+        } else if (action.equalsIgnoreCase("Login")) {
             ConexionesDB conector = new ConexionesDB();
             Usuario p = new Usuario();
             ResultSet resultadoConsulta = null;
             String password = request.getParameter("password").toString();
-            String user = request.getParameter("user");
-            Boolean status=false;
+            int user = Integer.parseInt(request.getParameter("user"));
+            int nivel = 0;
             try {
-                resultadoConsulta = conector.consulta("select * from Usuario where usuario='" + user + "' and contrasenia='" + password + "'");
+                resultadoConsulta = conector.consulta("select * from Usuario where noEmpleado=" + user + " and contra='" + password + "'");
                 while (resultadoConsulta.next()) {
                     System.out.println("imprime");
-                    status=true;
+                    nivel = (resultadoConsulta.getInt("nivel"));
+                    System.out.println("nivel : " + (resultadoConsulta.getInt("nivel")));
                 }
-                if (status)
-                {
-                    System.out.println("Dentro");
-                    acceso = "Acerca.jsp";
-                }
-                else{
-                    acceso = "index.jsp";
-                }
-                RequestDispatcher vista = request.getRequestDispatcher(acceso);
-                vista.forward(request, response);
-            } catch (Exception e) {
+                    if (nivel == 1) {
+                        System.out.println("Dentro 1");
+                        acceso = urlUsuarios;
+                        RequestDispatcher vista = request.getRequestDispatcher(acceso);
+                        vista.forward(request, response);
+                    } else if (nivel == 2) {
+                        System.out.println("Dentro 2");
+                        acceso = urlUsuarios;
+                        RequestDispatcher vista = request.getRequestDispatcher(acceso);
+                        vista.forward(request, response);
+                    } else if (nivel == 3) {
+                        System.out.println("Dentro 3");
+                        acceso = urlUsuarios;
+                        RequestDispatcher vista = request.getRequestDispatcher(acceso);
+                        vista.forward(request, response);
+                    } else {
+                        acceso = "index.jsp";
+                        RequestDispatcher vista = request.getRequestDispatcher(acceso);
+                        vista.forward(request, response);
+                    }
+
+                // RequestDispatcher vista = request.getRequestDispatcher(acceso);
+                // vista.forward(request, response);
+            } catch (IOException | ClassNotFoundException | SQLException e) {
                 System.out.println(e);
             }
 
         }
 
-        RequestDispatcher vista = request.getRequestDispatcher(acceso);
-        vista.forward(request, response);
     }
 
     /**

@@ -10,25 +10,21 @@ package Modelo;
  * @author oscar
  */
 public class Usuario {
-
+    int noEmpleado;
     String usuario;
-    String apellido;
-    String puesto;
-    int edad;
     String domicilio;
-    String contrasenia;
-
+    String contra;
+    int edad;
     public Usuario() {
 
     }
 
-    public Usuario(String usuario, String apellido, String puesto, int edad, String domicilio, String contrasenia) {
+    public Usuario(int noEmpleado, String usuario,  int edad, String domicilio, String contrasenia) {
+        this.noEmpleado=noEmpleado;
         this.usuario = usuario;
-        this.apellido = apellido;
-        this.puesto = puesto;
-        this.edad = edad;
+        this.edad=edad;
         this.domicilio = domicilio;
-        this.contrasenia = contrasenia;
+        this.contra = contra;
     }
 
     public String getUsuario() {
@@ -39,30 +35,6 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getPuesto() {
-        return puesto;
-    }
-
-    public void setPuesto(String puesto) {
-        this.puesto = puesto;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
     public String getDomicilio() {
         return domicilio;
     }
@@ -71,12 +43,30 @@ public class Usuario {
         this.domicilio = domicilio;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getContra() {
+        return contra;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setContra (String contra) {
+        this.contra = contra;
     }
+
+    public int getnoEmpleado() {
+        return noEmpleado;
+    }
+    
+    public void setnoEmpleado(int noEmpleado){
+        this.noEmpleado=noEmpleado;
+    }
+    
+      public int getEdad() {
+        return edad;
+    }
+    
+    public void setEdad(int edad){
+        this.edad=edad;
+    }
+
+    
 
 }

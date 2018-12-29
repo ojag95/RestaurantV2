@@ -26,11 +26,11 @@
         <script src="js/bootstrap.min.js"></script>
         <title>Usuarios</title>
     </head>
-    
-        <%
+
+     <%
             UsuarioDAO dao = new UsuarioDAO();
-            String usuario = request.getParameter("usuario");
-            Usuario u = (Usuario) dao.listar(usuario);
+            int noEmpleado = Integer.parseInt((String) request.getAttribute("noEmpleado"));
+            Usuario u = (Usuario) dao.listar(noEmpleado);
         %>
 
     <div style="background-image:url(images/fondo.jpg)">
@@ -39,7 +39,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!------ Include the above in your HEAD tag ---------->
         <br>
-    <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(images/fondo.jpg) no-repeat left center; background-size: cover;">
+        <div class="container-fluid" style="margin-top:35px" class="carousel-inner" style="background-image:url(images/fondo.jpg) no-repeat left center; background-size: cover;">
 
 
             <div class="row"  >
@@ -54,32 +54,25 @@
                                 <link rel="stylesheet" href="css/style.css">
                                 <link rel="stylesheet" href="css/main.css">
                                 <form  accion="ControladorUsuario">
-                                      <div class="form-group">
-                                            <label for="text">Nombre del usuario:</label>
-                                            <input type="text" class="form-control form-rounded" name="usuario" value="<%= u.getUsuario()%>" placeholder="Nuevo nombre" >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="text">Apellido:</label>
-                                            <input type="text" class="form-control form-rounded" name="apellido" value="<%= u.getApellido()%>" placeholder="Apellidos" >
-                                        </div>
-                                     <div class="form-group">
-                                     <label for="text">Puesto:</label>
-                                            <select name="puesto" placeholder="puesto" required> <option ><%= u.getPuesto()%> </option> <option value="Mesero">Mesero</option>  <option value="Admin">Admin</option> 
-                                                <option value="Contador">Contador</option>
-                                            </select></div>
-                                        <div class="form-group">  
-                                            <label for="text">Edad:</label>
-                                            <input min='1' type="number" step="1" class="form-control form-rounded" name="edad" value="<%= u.getEdad()%>" placeholder="edad" required>
+                                    <input type="hidden" class="form-control form-rounded" name="noEmpleado" value="<%= u.getnoEmpleado()%>" requiered>
 
-                                        </div>  
-                                        <div class="form-group">
-                                            <label for="text">Domicilio:</label>
-                                            <input type="text" class="form-control form-rounded" name="domicilio" value="<%= u.getDomicilio()%>" placeholder="domicilio" >
-                                        </div> 
-                                        <div class="form-group">
-                                            <label for="text">Contraseña:</label>
-                                            <input type="password" class="form-control form-rounded" name="contrasenia" value="<%= u.getContrasenia()%>" placeholder="Contraseña"  required>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="text">Nombre del usuario:</label>
+                                        <input type="text" class="form-control form-rounded" name="usuario" value="<%= u.getUsuario()%>" placeholder="Nuevo nombre" >
+                                    </div>
+                                    <div class="form-group">  
+                                        <label for="text">Edad:</label>
+                                        <input min='1' type="number" step="1" class="form-control form-rounded" name="edad" value="<%= u.getEdad()%>" placeholder="edad" required>
+
+                                    </div>  
+                                    <div class="form-group">
+                                        <label for="text">Domicilio:</label>
+                                        <input type="text" class="form-control form-rounded" name="domicilio" value="<%= u.getDomicilio()%>" placeholder="domicilio" >
+                                    </div> 
+                                    <div class="form-group">
+                                        <label for="text">Contraseña:</label>
+                                        <input type="password" class="form-control form-rounded" name="contra" value="<%= u.getContra()%>" placeholder="Contraseña"  required>
+                                    </div>
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" required> Confirmar datos </input>

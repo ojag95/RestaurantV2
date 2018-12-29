@@ -7,12 +7,10 @@ package Interfaces;
 
 import Modelo.Usuario;
 import java.util.List;
-public interface CRUDUsuarios {
-    public List listar();
-    public Usuario listar (String usuario);
-    public boolean agregar(Usuario usuario);
-    public boolean editar (Usuario usuario);
-    public boolean eliminar (String usuario);
 
-    
+public interface CRUDUsuarios {
+
+    public List listar();
+    public Usuario listar(int noEmpleado);
+    public boolean editar(Usuario usuario);
 }
