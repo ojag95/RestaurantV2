@@ -8,7 +8,8 @@ Pagina que retorna un JSON con las categorias de los platillos
 <%@page import="ModeloDAO.ProductoDAO"%>
 <%@page language="java" contentType="application/json;charset=UTF-8" %>
 
+
 <%  ProductoDAO dao = new ProductoDAO();
-    dao.obtenerJSONTipos(request, response);
+    dao.actualizarOrden(request, response);
 %>
     
